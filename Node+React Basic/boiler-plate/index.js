@@ -1,13 +1,14 @@
 const express = require('express')
 const app = express()
 const port = 5000
-
+const cookieParser = require('cookie-parser')
 const config = require('./config/key')
 
 const { User } = require('./models/user')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(cookieParser())
 
 const mongoose = require('mongoose')
 mongoose.connect(config.mongoURI, {
@@ -59,9 +60,20 @@ app.post('/login', (req, res) => {
       })
 
       // 토큰을 생성한다.
-      // info.generateToken((err, token) => {
-        
-      // })
+      info.generateToken((err, user) => {
+        if(err) return res.status(400).send(err)
+
+        console.log(user)
+
+        // 토큰을 저장한다.
+        // 쿠키, 로컬스토리지
+        res.cookie("x_auth", user.token)
+        .status(200)
+        .json({
+          success: true,
+          id: user._id,
+        })
+      })
     })
   })
 })

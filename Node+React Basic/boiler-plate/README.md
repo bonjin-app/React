@@ -147,6 +147,14 @@ userScheme.pre('save', function(next) {
 ```
 
 - jsonwebtoken
+https://www.npmjs.com/package/jsonwebtoken
+
+- Install
 ```bash
 npm install jsonwebtoken --save
+```
+
+- Cookie에 저장
+```bash
+npm install cookie-parser
 ```
