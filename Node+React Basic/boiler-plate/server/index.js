@@ -26,6 +26,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+app.get('/api/hello', (req, res) => {
+  res.send('hi hello ~')
+})
+
 app.post('/api/user/register', (req, res) => {
   // 회원가입시 필요한 정보들을 client 에서 가져오면 데이터를 DB에 넣어준다.
   

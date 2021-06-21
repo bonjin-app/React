@@ -143,3 +143,9 @@ function App() {
   );
 }
 ```
+
+### Axios
+
+```bash
+npm install axios --save
+```
