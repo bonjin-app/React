@@ -73,3 +73,9 @@ git repository(LOCAL)
 
 - PUSH
 git repository(REMOTE)
+
+- Add를 한 뒤 .gitignore 생성시. (push 이전)
+
+```bash
+git rm --cached node_modules -r
+```
