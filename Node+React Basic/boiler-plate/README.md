@@ -112,3 +112,34 @@ development
 - Deploy(배포) 환경
 Heroku 설정 파일에 Config Variable을 넣는다.
 production
+
+## 8. Bcrypt 암호화
+```bash
+npm install bcrypt --save
+```
+
+- 암호화 순서
+salt 생성
+plaintext, salt로 bcrypt.hash 암호화 수행.
+
+- user.js 추가.
+save 이전에 수행.
+```js 
+userScheme.pre('save', function(next) {
+    var user = this
+
+    if(user.isModified('password')) {
+        // 비밀번호를 암호화 시킨다.
+        bcrypt.genSalt(saltRounds, function(err, salt) {
+            if (err) return next(err)
+
+            bcrypt.hash(user.password, salt, function(err, hash) {
+                if (err) return next(err)
+
+                user.password = hash
+                next()
+            })
+        })
+    }
+})
+```
