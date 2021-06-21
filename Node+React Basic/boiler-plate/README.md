@@ -89,7 +89,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 ```
 
-# 6. nodemon
+## 6. nodemon
 소스를 변경할 때 그걸 감지해서 자동으로 서버를 재 시작해주는 tool
 ```bash
 npm install nodemon --save-dev
@@ -104,3 +104,11 @@ package.json
 ```bash
 npm run devStart
 ```
+
+## 7. 설정정보 관리
+- Local환경.
+development
+
+- Deploy(배포) 환경
+Heroku 설정 파일에 Config Variable을 넣는다.
+production

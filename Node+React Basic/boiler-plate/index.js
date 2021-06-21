@@ -2,13 +2,15 @@ const express = require('express')
 const app = express()
 const port = 5000
 
+const config = require('./config/key')
+
 const { User } = require('./models/user')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://bonjin:Cthqkqh88!@boilerplate.lphlf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect(config.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
