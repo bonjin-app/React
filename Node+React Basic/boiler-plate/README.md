@@ -88,3 +88,19 @@ app.use(express.urlencoded({ extended: true }))
 // application/json
 app.use(express.json())
 ```
+
+# 6. nodemon
+소스를 변경할 때 그걸 감지해서 자동으로 서버를 재 시작해주는 tool
+```bash
+npm install nodemon --save-dev
+```
+
+- npm script 생성
+package.json
+    - scripts
+        - "devStart": "nodemon index.js",
+
+- nodemon 실행
+```bash
+npm run devStart
+```
