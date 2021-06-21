@@ -2,6 +2,11 @@ const express = require('express')
 const app = express()
 const port = 5000
 
+const { User } = require('./models/user')
+
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
 const mongoose = require('mongoose')
 mongoose.connect('mongodb+srv://bonjin:Cthqkqh88!@boilerplate.lphlf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -16,6 +21,22 @@ mongoose.connect('mongodb+srv://bonjin:Cthqkqh88!@boilerplate.lphlf.mongodb.net/
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
+})
+
+app.post('/register', (req, res) => {
+  // 회원가입시 필요한 정보들을 client 에서 가져오면 데이터를 DB에 넣어준다.
+  
+  const user = User(req.body)
+  user.save((err, info) => {
+    if(err) return res.json({ 
+      success: false,
+      err
+    })
+
+    return res.status(200).json({
+        success: true
+    })
+  })
 })
 
 app.listen(port, () => {

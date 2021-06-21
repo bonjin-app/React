@@ -79,3 +79,12 @@ git repository(REMOTE)
 ```bash
 git rm --cached node_modules -r
 ```
+
+## 5. BodyParser & Postman
+express에 포함됨.
+```js
+// application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }))
+// application/json
+app.use(express.json())
+```
