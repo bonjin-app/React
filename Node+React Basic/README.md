@@ -31,3 +31,24 @@ npm install express --save
 2. Virtual DOM에서 찍어둔 Snapshot과 비교를 해서 바뀐 부분을 찾는다.
 3. Virtual DOM의 변경된 부분을 찾는다. (diffing)
 4. 바뀐 부분만 Real DOM에서 변경해준다.
+
+- Create
+create-react-app Command로 프로젝트를 시작할 수 있다.
+
+- Install
+기존에는 아래 방식처럼 진행했었다.
+```bash
+npm install -g create-react-app
+```
+
+npx를 이용하여 다운받지 않고 사용가능하다.
+```bash
+npx create-react-app .
+```
+
+### Babel
+최신 자바스크립트 문법을 지원하지 않는 브라우저들을 위해서
+최선 자바스크립트 문법을 구형 브라우저에서도 돌 수 있게 변환 해주는것.
+
+### Webpack
+복잡하게 있는 모듈들을 정적 파일로 변경해준다.
