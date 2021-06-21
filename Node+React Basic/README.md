@@ -45,6 +45,11 @@ npx를 이용하여 다운받지 않고 사용가능하다.
 ```bash
 npx create-react-app .
 ```
+- Start
+```bash
+npm run start
+```
+
 ### NPM (node package manager)
 레지스트리. 라이브러리를 담고있는 역할.
 배포할때 npm run build .
@@ -66,3 +71,75 @@ npx가 npm registry에서 create-react-app을 찾아서 다운로드 없이 실�
 
 ### Webpack
 복잡하게 있는 모듈들을 정적 파일로 변경해준다.
+src 폴더만 관리해준다.
+이미지를 넣을때 src에 넣어서 관리해주도록 해주는게 좋다.
+
+### React
+https://reactrouter.com/web/guides/quick-start
+
+src 
+    Redux를 위한 폴더들
+    - _actions
+    - _reducer
+
+    페이지에 관련된 css파일이나, componenet를 넣는다.
+    - components/views
+
+    Routing 관련 일을 처리한다.
+    - App.js 
+
+    환경 변수 같은 정보를 정한다.
+    - Config.js
+
+    Higher Order Component의 약자
+    - hoc
+
+    utility 파일을 정리.
+    - utils
+
+- Router
+Router, Switch, Route ...
+
+```bash
+npm install react-router-dom --save
+```
+
+Route 연결
+```js
+function App() {
+  return (
+    <Router>
+      <div>
+        <Switch>
+          <Route exact path="/">
+            <LandingPage />
+          </Route>
+          <Route exact path="/login">
+            <LoginPage />
+          </Route>
+          <Route exact path="/register">
+            <RegisterPage />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+```
+
+줄임 표현식
+```js
+function App() {
+  return (
+    <Router>
+      <div>
+        <Switch>
+          <Route exact path="/" component={LandingPage}/>
+          <Route exact path="/login" component={LoginPage}/>
+          <Route exact path="/register" component={RegisterPage}/>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+```
