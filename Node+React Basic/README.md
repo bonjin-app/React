@@ -45,6 +45,20 @@ npx를 이용하여 다운받지 않고 사용가능하다.
 ```bash
 npx create-react-app .
 ```
+### NPM (node package manager)
+레지스트리. 라이브러리를 담고있는 역할.
+배포할때 npm run build .
+
+- install -g 
+옵션을 주지 않으면 local설치가 된다.
+node_modules가 설치된다.
+
+옵션을 주면 피시에 설치가 된다.
+
+### NPX
+npx가 npm registry에서 create-react-app을 찾아서 다운로드 없이 실행하게 된다.
+1. Disk Space를 낭비하지 않을 수 있다.
+2. 항상 최신 버전을 사용할 수 있다.
 
 ### Babel
 최신 자바스크립트 문법을 지원하지 않는 브라우저들을 위해서
