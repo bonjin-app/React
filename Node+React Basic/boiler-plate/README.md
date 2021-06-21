@@ -14,6 +14,10 @@ npm run start
 ## 2. mongoDB
 https://www.mongodb.com/
 
+- IP 추가
+Network Access
+    - IP Access: ADD IP ADDRESS
+        
 - mongoose
 ```bash
 npm install mongoose --save
