@@ -40,3 +40,36 @@ mongoose.connect('mongodb+srv://bonjin:<password>@boilerplate.lphlf.mongodb.net/
 ```
 
 ## 3. MongoDB Model & Schema
+- Schema 생성
+mongoose.Schema({})
+
+- Model 생성
+mongoose.model('User', scheme)
+
+## 4. GIT
+- Version 확인
+```bash
+git --version
+```
+
+- git 저장소 생성
+```bash
+git init
+```
+
+- git 상태
+```bash
+git status
+```
+
+- Default
+working directory
+
+- ADD
+staging area
+
+- COMMIT
+git repository(LOCAL)
+
+- PUSH
+git repository(REMOTE)
