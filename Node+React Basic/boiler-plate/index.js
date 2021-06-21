@@ -41,6 +41,31 @@ app.post('/register', (req, res) => {
   })
 })
 
+app.post('/login', (req, res) => {
+  // 요청된 이메일을 데이터베이스에서 찾는다.
+  User.findOne({ email: req.body.email }, (err, info) => {
+    if(!info) {
+      return res.json({
+        success: false,
+        message: "존재하지 않는 회원입니다."
+      })
+    }
+
+    // 요청된 이메일이 데이터베이스에 있다면 비밀번호가 맞는지 확인한다.
+    info.comparePassword(req.body.password, (err, isMatch) => {
+      if(!isMatch) return res.json({
+        success: false,
+        message: "비밀번호가 일치하지 않습니다."
+      })
+
+      // 토큰을 생성한다.
+      // info.generateToken((err, token) => {
+        
+      // })
+    })
+  })
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })

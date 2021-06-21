@@ -145,3 +145,8 @@ userScheme.pre('save', function(next) {
     }
 })
 ```
+
+- jsonwebtoken
+```bash
+npm install jsonwebtoken --save
+```
