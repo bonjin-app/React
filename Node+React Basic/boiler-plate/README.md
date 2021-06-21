@@ -14,6 +14,8 @@ npm run start
 ## 2. mongoDB
 https://www.mongodb.com/
 
+- 회원가입 & 로그인
+- Clustor 추가
 - IP 추가
 Network Access
     - IP Access: ADD IP ADDRESS
@@ -22,3 +24,19 @@ Network Access
 ```bash
 npm install mongoose --save
 ```
+
+```js
+const mongoose = require('mongoose')
+mongoose.connect('mongodb+srv://bonjin:<password>@boilerplate.lphlf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+}).then(() => {
+    console.log("MongoDB Connected...")
+}).catch(err => {
+    console.log(err)
+})
+```
+
+## 3. MongoDB Model & Schema
