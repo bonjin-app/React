@@ -158,3 +158,5 @@ npm install jsonwebtoken --save
 ```bash
 npm install cookie-parser
 ```
+
+## 9. Auth

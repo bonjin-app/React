@@ -3,7 +3,7 @@ const app = express()
 const port = 5000
 const cookieParser = require('cookie-parser')
 const config = require('./config/key')
-
+const { auth } = require('./middleware/auth')
 const { User } = require('./models/user')
 
 app.use(express.urlencoded({ extended: true }))
@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.post('/register', (req, res) => {
+app.post('/api/user/register', (req, res) => {
   // 회원가입시 필요한 정보들을 client 에서 가져오면 데이터를 DB에 넣어준다.
   
   const user = User(req.body)
@@ -42,7 +42,7 @@ app.post('/register', (req, res) => {
   })
 })
 
-app.post('/login', (req, res) => {
+app.post('/api/user/login', (req, res) => {
   // 요청된 이메일을 데이터베이스에서 찾는다.
   User.findOne({ email: req.body.email }, (err, info) => {
     if(!info) {
@@ -75,6 +75,21 @@ app.post('/login', (req, res) => {
         })
       })
     })
+  })
+})
+
+app.post('/api/user/auth', auth, (req, res) => {
+  // middleware, Authentication이 true
+  res.status(200)
+  .json({
+    _id: req.user._id,
+    email: req.user.email,
+    isAdmin: req.user.role === 0 ? false : true,
+    isAuth: true,
+    name: req.user.name,
+    lastname: req.user.lastname,
+    role: req.user.role,
+    image: req.user.image
   })
 })
 
