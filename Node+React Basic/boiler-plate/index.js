@@ -68,11 +68,11 @@ app.post('/api/user/login', (req, res) => {
         // 토큰을 저장한다.
         // 쿠키, 로컬스토리지
         res.cookie("x_auth", user.token)
-        .status(200)
-        .json({
-          success: true,
-          id: user._id,
-        })
+            .status(200)
+            .json({
+              success: true,
+              id: user._id,
+            })
       })
     })
   })
@@ -90,6 +90,18 @@ app.post('/api/user/auth', auth, (req, res) => {
     lastname: req.user.lastname,
     role: req.user.role,
     image: req.user.image
+  })
+})
+
+app.get('/api/user/logout', auth, (req, res) => {
+  User.findOneAndUpdate({ _id: req.user._id }, {
+    token: ""
+  }, (err, user) => {
+    if(err) return res.json({ success: false , err })
+    return res.status(200)
+    .send({
+      success: true
+    })
   })
 })
 

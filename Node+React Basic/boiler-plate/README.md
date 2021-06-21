@@ -160,3 +160,10 @@ npm install cookie-parser
 ```
 
 ## 9. Auth
+middleware 설정.
+```js
+app.post('', auth, function...)
+app.get('', auth, function...)
+```
+
+auth.js => userScheme.statics.findByToken
