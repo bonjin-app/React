@@ -149,3 +149,28 @@ function App() {
 ```bash
 npm install axios --save
 ```
+
+- 같은 Origin은 Same-origin requests(always allowed) 허용이 된다.
+
+- 다른 Origin은 Cors 정책때문에 Cross-Origin Resource Sharing 허용되지 않는다.
+Client port
+Server port 가 다르다.
+
+- 해결
+Proxy 를 사용해서 해결
+Configuring the Proxy Manually
+https://create-react-app.dev/docs/proxying-api-requests-in-development/
+
+Install
+```bash
+npm install http-proxy-middleware --save
+```
+
+src/setupProxy.js
+```js
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
+module.exports = function(app) {
+  // ...
+};
+```
