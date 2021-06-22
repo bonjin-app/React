@@ -158,6 +158,21 @@ Server port 가 다르다.
 
 - 해결
 Proxy 를 사용해서 해결
+1. Proxy Server에서 임이로 바꿔 버릴 수 있다.
+그래서 인터넷에서 접근하는 사람의 IP를 모르게 된다.
+2. 보내는 데이터도 임의로 바꿀 수 있다.
+
+Proxy Server
+1. 방화벽기능
+2. 웹 필터 기능
+3. 캐쉬 데이터, 공유 데이터 제공 기능. (Proxy Server에 담아둘 수 있다.)
+
+Proxy Server 사용이유
+1. 회사에서 직원들이나 집안에서 아이들 인터넷 사용 제어.
+2. 캐쉬를 이용해 더 빠른 인터넷 이용 제공
+3. 더 나은 보안 제공.
+4. 이용 제한된 사이트 접근 가능
+
 Configuring the Proxy Manually
 https://create-react-app.dev/docs/proxying-api-requests-in-development/
 
@@ -174,3 +189,12 @@ module.exports = function(app) {
   // ...
 };
 ```
+
+### Concurrentyly
+client, server 동시 실행
+
+```bash
+npm install concurrently --save
+```
+package.json -> scripts
+"devStart": "concurrently \"npm run backend\" \"npm run start --prefix client\""
