@@ -29,3 +29,6 @@ npx serve -s build
 
 ## jsx
 태그를 작성하거나 다양한 편의를 제공하는.
+
+## React Developer Tools
+https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=ko
