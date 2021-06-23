@@ -35,3 +35,34 @@ https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopl
 
 ## state
 props, state
+
+## bind
+```js
+var obj = {
+    name: 'gigas'
+}
+
+function bindTest() {
+    console.log(this.name);
+}.bind(obj);
+
+```
+
+## event
+```js
+<a href={`/content/${data[i].id}`}
+    data-id={data[i].id}
+    onClick={function(e) {
+        e.preventDefault();
+        this.props.onChagePage(e.target.dataset.id);
+    }.bind(this)}>{data[i].title}</a>
+```
+
+```js
+<a href={`/content/${data[i].id}`}
+    data-id={data[i].id}
+    onClick={function(id, e) {
+        e.preventDefault();
+        this.props.onChagePage(id);
+    }.bind(this, data[i].id)}>{data[i].title}</a>
+```
