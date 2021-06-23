@@ -26,3 +26,6 @@ npm run build
 ## serve
 build 파일을 서버를 통해 볼 수 있다.
 npx serve -s build
+
+## jsx
+태그를 작성하거나 다양한 편의를 제공하는.
