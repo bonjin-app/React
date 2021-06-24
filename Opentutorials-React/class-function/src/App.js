@@ -2,11 +2,19 @@ import { Component, useEffect, useState} from 'react';
 import './App.css';
 
 function App() {
+  const [showFunc, setShowFunc] = useState(true)
+  const [showClass, setShowClass] = useState(true)
   return (
     <div className="container">
       <h1>Hello World</h1>
-      <FuncComp initNumber={2}/>
-      <ClassComp initNumber={2}/>
+      <input type="button" value="remove func" onClick={function() {
+        setShowFunc(!showFunc)
+      }}></input>
+      <input type="button" value="remove class" onClick={function() {
+        setShowClass(!showClass)
+      }}></input>
+      {showFunc ? <FuncComp initNumber={2} /> : null}
+      {showClass ? <ClassComp initNumber={2}/> : null}
     </div>
   );
 }
@@ -20,13 +28,33 @@ function FuncComp(props) {
 
   // componentDidMount, componentDidUpdate와 같은 방식으로
   useEffect(function() {
-    console.log('%c func => useEffect A ' + (++funcId), funcStyle)
+    console.log('%c func => useEffect (componentDidMount)' + (++funcId), funcStyle)
+    document.title = number
 
-    document.title = number + ' : ' + date
-  })
+    return function() {
+      console.log('%c func => useEffect Return (componentWillUnMount)' + (++funcId), funcStyle)
+    }
+  }, [])
+
+  useEffect(function() {
+    console.log('%c func => useEffect number' + (++funcId), funcStyle)
+    document.title = number
+
+    return function() {
+      console.log('%c func => useEffect number Return ' + (++funcId), funcStyle)
+    }
+  }, [number])
+
+  useEffect(function() {
+    console.log('%c func => useEffect data' + (++funcId), funcStyle)
+    document.title = date
+
+    return function() {
+      console.log('%c func => useEffect date Return ' + (++funcId), funcStyle)
+    }
+  }, [date])
 
   console.log('%c func => render' + (funcId), funcStyle)
-
   return (
     <div className="container">
       <h2>function style component</h2>
@@ -72,6 +100,10 @@ class ClassComp extends Component {
 
   componentDidUpdate() {
     console.log("%cclass => componentDidUpdate", 'color: red;')
+  }
+
+  componentWillUnmount() {
+    console.log("%cclass => componentWillUnmount", 'color: red;')
   }
 
   render() {
