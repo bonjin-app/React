@@ -1,4 +1,4 @@
-import { Component, useState} from 'react';
+import { Component, useEffect, useState} from 'react';
 import './App.css';
 
 function App() {
@@ -11,9 +11,21 @@ function App() {
   );
 }
 
+var funcStyle = 'color:green';
+var funcId = 0;
+
 function FuncComp(props) {
   const [number, setNumber] = useState(props.initNumber);
   const [date, setDate] = useState();
+
+  // componentDidMount, componentDidUpdate와 같은 방식으로
+  useEffect(function() {
+    console.log('%c func => useEffect A ' + (++funcId), funcStyle)
+
+    document.title = number + ' : ' + date
+  })
+
+  console.log('%c func => render' + (funcId), funcStyle)
 
   return (
     <div className="container">
