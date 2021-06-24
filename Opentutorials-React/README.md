@@ -74,5 +74,9 @@ function bindTest() {
 ```
 
 # class vs function
+
 hook 개념이 도입되었다.
 function 방식에서도 state 를 관리한다.
+
+- life cycle
+https://gseok.gitbooks.io/react/content/bd80-bd84-bd80-bd84-c9c0-c2dd-b4e4/react-component-lifecycle-api-c815-b9ac.html

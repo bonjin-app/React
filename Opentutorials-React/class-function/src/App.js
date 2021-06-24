@@ -33,6 +33,7 @@ function FuncComp(props) {
 class ClassComp extends Component {
 
   constructor(props) {
+    console.log("%cclass => constructor", 'color: red;')
     super(props)
     this.state = {
       number: this.props.initNumber,
@@ -40,7 +41,30 @@ class ClassComp extends Component {
     }
   }
 
+  componentWillMount() {
+    console.log("%cclass => componenetWillMount", 'color: red;')
+  }
+
+  componentDidMount() {
+    console.log("%cclass => componentDidMount", 'color: red;')
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("%cclass => shouldComponentUpdate", 'color: red;')
+    return true;
+  }
+
+  componentWillUpdate() {
+    console.log("%cclass => componentWillUpdate", 'color: red;')
+  }
+
+  componentDidUpdate() {
+    console.log("%cclass => componentDidUpdate", 'color: red;')
+  }
+
   render() {
+    console.log("%cclass => render", 'color: red;')
+
     return (
       <div className="container">
       <h2>class style component</h2>
