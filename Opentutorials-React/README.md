@@ -34,7 +34,13 @@ npx serve -s build
 https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=ko
 
 ## state
-props, state
+- props
+props are read-only
+props can not be modified
+
+- state
+state changes can be asynchronous
+state can be modified using this.setState
 
 ## bind
 ```js
