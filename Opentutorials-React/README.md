@@ -72,3 +72,7 @@ function bindTest() {
         this.props.onChagePage(id);
     }.bind(this, data[i].id)}>{data[i].title}</a>
 ```
+
+# class vs function
+hook 개념이 도입되었다.
+function 방식에서도 state 를 관리한다.
