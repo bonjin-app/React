@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pratice</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.0/redux.js" integrity="sha512-tqb5l5obiKEPVwTQ5J8QJ1qYaLt+uoXe1tbMwQWl6gFCTJ5OMgulwIb3l2Lu7uBqdlzRf5yBOAuLL4+GkqbPPw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     
@@ -14,46 +15,97 @@
     <div id="content"></div>
 
     <script>
-        (function subject() {
+        function subject() {
             document.querySelector('#subject').innerHTML = `
             <header>
                 <h1>WEB</h1>
                 Hello, WEB!
             </header>
             `;
-        })();
+        }
 
-        (function TOC() {
+        function TOC() {
+            var state = store.getState();
+            var i = 0;
+            var liTags = '';
+            while(i < state.contents.length) {
+                liTags += `
+                    <li>
+                        <a onclick="
+                            event.preventDefault();
+                            var action = {type: 'SELECT', id: ${state.contents[i].id}};
+                            store.dispatch(action);
+                        " href="${state.contents[i].id}">${state.contents[i].title}</a>
+                    </li>
+                `;
+                i = i + 1;
+            }
             document.querySelector('#toc').innerHTML = `
             <nav>
                 <ol>
-                    <li><a href="1.html"></a>HTML</li>
-                    <li><a href="2.html"></a>CSS</li>
+                    ${liTags}
                 </ol>
             </nav>
             `;
-        })();
+        }
 
-        (function control() {
+        function control() {
             document.querySelector('#control').innerHTML = `
             <ul>
                 <li><a href="/create">create</a></li>
                 <li><input type="button" value="delete"></li>
             </ul>
             `;
-        })();
+        }
 
-        (function article() {
+        function article() {
+            var state = store.getState();
+            var i = 0;
+            var title, desc;
+            while(i < state.contents.length) {
+                if (state.contents[i].id === state.selectedId) {
+                    title = state.contents[i].title;
+                    desc = state.contents[i].desc;
+                    break;
+                }
+                i = i + 1;
+            }
             document.querySelector('#content').innerHTML = `
             <article>
-                <h2>HTML</h2>
-                HTML is ...
+                <h2>${title}</h2>
+                ${desc}
             </article>
             `;
-        })();
-    </script>
+        }
 
-    
-    
+        function reducer(state, action) {
+            console.log(state, action);
+
+            if (state === undefined) {
+                return {
+                    selectedId: 2,
+                    contents: [
+                        {id: 1, title: 'HTML', desc: 'HTML is ...'},
+                        {id: 2, title: 'CSS', desc: 'CSS is ...'},
+                        {id: 3, title: 'Javascript', desc: 'Javascript is ...'},
+                    ]
+                }
+            }
+
+            var newState;
+            if(action.type === 'SELECT') {
+                newState = Object.assign({}, state, {selectedId: action.id});
+            }
+            console.log(action, state, newState);
+            return newState;
+        }
+        var store = Redux.createStore(reducer);
+        store.subscribe(article);
+
+        subject();
+        TOC();
+        control();
+        article();
+    </script>
 </body>
 </html>
