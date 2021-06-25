@@ -6,8 +6,6 @@ https://ko.redux.js.org/introduction/getting-started/
 하나의 상태를 갖는다.
 state = {}
 
-
-
 ### reducer
 
 ### render
