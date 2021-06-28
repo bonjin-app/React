@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Navbar from './components/navbar/Navbar';
 
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
 
   return (
     <div className="container">
+      <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar}/>
       <h1>React Dashboard</h1>
     </div>
   );
