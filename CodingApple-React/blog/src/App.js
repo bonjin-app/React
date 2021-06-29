@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import logo from './logo.svg';
+import Modal from './components/Modal';
 import './App.css';
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <hr/>
       </div>
 
+        <Modal title={title[0]}/>
     </div>
   );
 }
