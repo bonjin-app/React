@@ -97,7 +97,7 @@ src
     utility 파일을 정리.
     - utils
 
-- Router
+### Router 
 Router, Switch, Route ...
 
 ```bash
@@ -186,7 +186,13 @@ src/setupProxy.js
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function(app) {
-  // ...
+  app.use(
+    '/api',
+    createProxyMiddleware({
+      target: 'http://localhost:5000',
+      changeOrigin: true,
+    })
+  );
 };
 ```
 
@@ -212,3 +218,5 @@ npm install antd
 3. Semantic UI
 4. Ant Design
 5. Materialize
+
+### Redux
