@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
 
 
 function Home() {
@@ -37,9 +37,9 @@ function App() {
       <div className="App">
         <h1>React Router DOM example</h1>
         <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/topic">Topic</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
+          <li><NavLink exact to="/">Home</NavLink></li>
+          <li><NavLink to="/topic">Topic</NavLink></li>
+          <li><NavLink to="/contact">Contact</NavLink></li>
         </ul>
 
         <Switch>
