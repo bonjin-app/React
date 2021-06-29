@@ -11,3 +11,9 @@ className
 - Style
 Object 형식으로만 표현가능.
 {color: 'blue'}
+
+- eslint
+/* eslint-disable */
+
+- event
+무조건 function 표현식으로
