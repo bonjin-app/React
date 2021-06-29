@@ -220,3 +220,69 @@ npm install antd
 5. Materialize
 
 ### Redux
+상태관리 라이브러리
+- Props
+1. shorthand for properties
+2. Props are haw components talk to each other.
+3. props flow downwards from the parent component
+4. Props are immutable from the child perspective if you want to change that value ? the parent should just change its internal state
+
+```js
+<ChatMessaged
+  messaged={message}
+  currentMember={member}
+/>
+```
+
+- State
+1. parent component에서 child component로 data를 보내는게 아닌 componenet안에서 데이터를 전달하려면 state로 전달한다.
+예를 들어서 검색 창에 글을 입력할 때 글이 변하는것은 state를 바꾼다.
+2. State is mutable
+3. State 이 변하면 re-render된다.
+
+```js
+state = {
+  message: '',
+  attachFile: undefined,
+  openMenu: false,
+};
+```
+
+- Redux Data Flow(strict unidirectional data flow)
+1. React Componenet (Subscribe)
+2. Action (Dispatch)
+a plain object describing what happened.
+```js
+{type: 'LIKE_ARTICLE', articleId: 42}
+{type: 'FETCH_USER_SUCCESS', response: {id: 3, name: 'Mary'}}
+{type: 'ADD_TODO', text: 'Read the Redux docs.'}
+```
+
+3. Reducer
+a function describing how the application's state changes
+
+```js
+(previousState, action) => nextState
+```
+이전 State와 action object를 받은 후에 next state를 return한다.
+Reducer는 pure function이기에 reducer내부에서 하지 말아야 할것들.
+- Mutate its arguments;
+- Perform side effects like API calls and routing transitions;
+- Call non-pure functions, e.g. Date.now() or Math.random()
+
+4. Store
+the object that brings them together A store holds the whole state tree of your application. The only way to change the state inside it is to dispatch an action on it. A store is not a class. It's just an object with a few methods on it.
+
+<Provider/> is the higher-order component provided by React Redux that lets you bind Redux to React
+
+
+#### Install
+다운 받아야할 Dependency
+1. redux
+2. react-redux
+3. redux-promise
+4. redux-thunk
+
+```bash
+npm install redux react-redux redux-promise redux-thunk --save
+```
