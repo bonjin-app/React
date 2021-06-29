@@ -276,7 +276,7 @@ the object that brings them together A store holds the whole state tree of your 
 <Provider/> is the higher-order component provided by React Redux that lets you bind Redux to React
 
 
-#### Install
+- Install
 다운 받아야할 Dependency
 1. redux
 2. react-redux
@@ -289,4 +289,16 @@ Dispatch 한테 functions 받는 방법을 알려준다.
 
 ```bash
 npm install redux react-redux redux-promise redux-thunk --save
+```
+
+
+### Hook
+```js
+const [name, setName] = useState("");
+```
+
+```js
+useEffect(() => {
+
+}, [])
 ```
