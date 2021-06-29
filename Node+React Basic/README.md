@@ -281,7 +281,11 @@ the object that brings them together A store holds the whole state tree of your 
 1. redux
 2. react-redux
 3. redux-promise
+Redux를 잘 사용할 수 있게끔 도와주는 mideware
+Dispatch 한테 promise 대처 방법을 알려준다.
 4. redux-thunk
+Redux를 잘 사용할 수 있게끔 도와주는 mideware
+Dispatch 한테 functions 받는 방법을 알려준다.
 
 ```bash
 npm install redux react-redux redux-promise redux-thunk --save
