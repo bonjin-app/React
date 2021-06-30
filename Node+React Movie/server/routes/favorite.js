@@ -24,6 +24,19 @@ router.post('/number', (req, res) => {
         })
 })
 
+router.post('/get', (req, res) => {
+    Favorite.find({ userFrom: req.body.userFrom })
+        .exec((err, data) => {
+            if (err) {
+                return res.status(400).send(err)
+            }
+            res.status(200).json({
+                success: true,
+                data: data
+            })
+        })
+})
+
 router.post('/favorited', (req, res) => {
     Favorite.find({
         movieId: req.body.movieId,
