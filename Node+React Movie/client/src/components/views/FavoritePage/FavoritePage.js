@@ -5,11 +5,11 @@ import './Favorite.css'
 function FavoritePage() {
 
     useEffect(() => {
-        Axios.post('/api/favorite/getFavoredMovie', {
+        Axios.post('/api/favorite/get', {
             userFrom: localStorage.getItem('userId')
         }).then(response => {
             if (response.data.success) {
-
+                console.log('favorite', response)
             } else {
                 alert('영화 정보를 가져오는데 실패했습니다.');
             }
