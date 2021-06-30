@@ -302,3 +302,13 @@ useEffect(() => {
 
 }, [])
 ```
+
+### Auth (HOC)
+Concretely, a higher-order componenet is a function that takes a component and returns a new component.
+```js
+const EnhancedComponent = higherOrderComponent(WrappedComponent);
+```
+하나의 Component를 받은다음에 새로운 Component를 리턴하는.
+
+LOGGED IN COMPONENT
+해당 유저가 해당 페이지에 들어갈 자격이 되는지를 알아낸 후에 w자격이 된다면 Admin component에 가게 해주고 아니라면 다른 페이지로 보내버린다.
