@@ -50,8 +50,8 @@ function LandingPage() {
                         <Fragment key={i}>
                             <GridCard
                                 image={m.poster_path ? `${API_IMAGE_URL}/w500${m.poster_path}` : ''}
-                                movieId={m.id}
-                                movieName={m.original_title}
+                                id={m.id}
+                                name={m.original_title}
                             />
                         </Fragment>
                     ))

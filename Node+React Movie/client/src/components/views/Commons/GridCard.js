@@ -2,12 +2,17 @@ import React from 'react'
 import { Col } from 'antd';
 
 function GridCard(props) {
+    console.log(props.id == null)
     return (
         <Col lg={6} md={8} xs={24}>
             <div style={{ position: 'relative' }}>
-                <a href={`/movie/${props.movieId}`}>
-                    <img src={props.image} alt={props.movieName} style={{ width: '100%', height: '320px' }} />
-                </a>
+                {props.id == null ?
+                    <img src={props.image} alt={props.name} style={{ width: '100%', height: '320px' }} />
+                    :
+                    <a href={`/movie/${props.id}`}>
+                        <img src={props.image} alt={props.name} style={{ width: '100%', height: '320px' }} />
+                    </a>
+                }
             </div>
         </Col>
     )
