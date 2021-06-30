@@ -25,7 +25,7 @@ function LandingPage() {
             .then(response => {
                 // setMovies([...movies, ...response.results])
                 setMovies(movies.concat(response.results))
-                setMainMovieImage(movies[0])
+                setMainMovieImage(response.results[0])
                 setCurrentPage(response.page)
             })
     }
@@ -38,6 +38,7 @@ function LandingPage() {
                     title={mainMovieImage.original_title}
                     description={mainMovieImage.overview} />
             }
+
             <div style={{ width: '85%', margin: '1rem auto' }}>
                 <h2>Movies by latest</h2>
                 <hr />
