@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const favoriteSchema = mongoose.Schema({
-    userForm: {
+    userFrom: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },

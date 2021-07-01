@@ -63,6 +63,11 @@ router.post('/favorited', (req, res) => {
 
 router.post('/add', (req, res) => {
     const favorite = Favorite(req.body);
+
+    console.log('body', req.body);
+    console.log('favorite', favorite);
+    console.log('userFrom', req.body.userFrom);
+
     favorite.save((err, data) => {
         if (err) return res.status(400).send(err);
 
