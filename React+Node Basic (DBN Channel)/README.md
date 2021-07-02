@@ -20,6 +20,15 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
   .then(json => console.log(json))
 ```
 
+1) constructor()
+2) componentWillMount()
+3) render()
+4) componentDidMount()
+
+/*
+props or state => shouldComponentUpdate()
+*/
+
 ### Management System
 본 프로젝트는 React 강의 목적으로 만들어진 고객관리 시스템 입니다.
 
@@ -30,3 +39,5 @@ https://material-ui.com/
 npm install @material-ui/core
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+
+

@@ -1,17 +1,26 @@
 import './App.css';
 import Customer from './components/Customer';
-import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
+import { Table, TableHead, TableBody, TableRow, TableCell, CircularProgress } from '@material-ui/core';
 import { Component } from 'react';
 class App extends Component {
 
   state = {
-    customers: ''
+    customers: '',
+    completed: 0
   }
 
   componentDidMount() {
+    this.timer = setInterval(this.progress, 20);
     this.callApi()
       .then(res => this.setState({ customers: res }))
       .catch(err => console.log(err))
+  }
+
+  progress = () => {
+    const { completed } = this.state;
+    this.setState({
+      completed: completed >= 100 ? 0 : completed + 1
+    })
   }
 
   callApi = async () => {
@@ -34,11 +43,18 @@ class App extends Component {
           </TableRow>
         </TableHead>
         <TableBody>
-          {this.state.customers && this.state.customers.map((m, i) => {
+          {this.state.customers ? this.state.customers.map((m, i) => {
             return (
               <Customer key={i} customer={m} />
             )
-          })}
+          }) :
+            <TableRow>
+              <TableCell colSpan={6} align='center'>
+                {/* <CircularProgress variant="determinate" value={this.state.completed} /> */}
+                <CircularProgress color="secondary" />
+              </TableCell>
+            </TableRow>
+          }
         </TableBody>
       </Table>
     );
