@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 // const { Video } = require("../models/Video");
 const multer = require('multer');
+const ffmpeg = require('fluent-ffmpeg')
 
 // STORAGE MULTER CONFIG
 let storage = multer.diskStorage({
@@ -32,13 +33,50 @@ router.post('/upload', (req, res) => {
             return res.json({ success: false, data: err })
         }
 
-
         return res.json({
             success: true,
             url: res.req.file.path,
             fileName: res.req.file.filename
         })
     })
+})
+
+router.post('/thumbnail', (req, res) => {
+
+    let filePath = "";
+    let fileDuration = ""
+
+    console.log('body', req.body)
+
+    // 비디오 정보 가져오기
+    ffmpeg.ffprobe(req.body.url, (error, metadata) => {
+        console.log('error', error)
+        console.log(metadata)
+        console.log(metadata.format.duration)
+        fileDuration = metadata.format.duration
+    })
+
+    // 썸네일 생성
+    ffmpeg(req.body.url)
+        .on('filenames', (filenames) => {
+            filePath = "uploads/thumbnails/" + filenames[0];
+        })
+        .on('end', () => {
+            return res.json({
+                success: true,
+                url: filePath,
+                fileDuration: fileDuration
+            })
+        })
+        .on('error', (error) => {
+            return res.json({ success: false, data: error })
+        })
+        .screenshot({
+            count: 3,
+            folder: 'uploads/thumbnails',
+            size: '230x240',
+            filename: 'thumbnail-%b.png'
+        })
 })
 
 module.exports = router;
