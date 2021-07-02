@@ -1,0 +1,7 @@
+{
+    "host": "gigas.synology.me",
+    "user": "node",
+    "password": "1234",
+    "port": "3306",
+    "database": "node"
+}
