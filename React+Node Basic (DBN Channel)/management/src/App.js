@@ -1,24 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import Customer from './components/Customer';
+
+const customers = [
+  {
+    id: 1,
+    image: 'https://placeimg.com/512/512/1',
+    name: '홍길동1',
+    birthday: '900000',
+    gender: '남자',
+    job: '대학생'
+  },
+  {
+    id: 2,
+    image: 'https://placeimg.com/512/512/2',
+    name: '홍길동2',
+    birthday: '900000',
+    gender: '남자',
+    job: '대학생'
+  },
+  {
+    id: 3,
+    image: 'https://placeimg.com/512/512/3',
+    name: '홍길동3',
+    birthday: '900000',
+    gender: '남자',
+    job: '대학생'
+  },
+]
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {customers.map((m, i) => {
+        return (
+          <Customer key={i} customer={m} />
+        )
+      })}
+    </>
   );
 }
 
