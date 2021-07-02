@@ -1,52 +1,28 @@
 import './App.css';
 import Customer from './components/Customer';
-import { Paper, Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
+import { Component } from 'react';
+class App extends Component {
 
-const useStyles = makeStyles({
-  root: {
-    width: '100%',
-    overflowX: 'auth'
-  },
-  table: {
-    minWidth: 1080
+  state = {
+    customers: ''
   }
-})
 
-const customers = [
-  {
-    id: 1,
-    image: 'https://placeimg.com/64/64/1',
-    name: '홍길동1',
-    birthday: '900000',
-    gender: '남자',
-    job: '대학생'
-  },
-  {
-    id: 2,
-    image: 'https://placeimg.com/64/64/2',
-    name: '홍길동2',
-    birthday: '900000',
-    gender: '남자',
-    job: '대학생'
-  },
-  {
-    id: 3,
-    image: 'https://placeimg.com/64/64/3',
-    name: '홍길동3',
-    birthday: '900000',
-    gender: '남자',
-    job: '대학생'
-  },
-]
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({ customers: res }))
+      .catch(err => console.log(err))
+  }
 
-export default function App(props) {
+  callApi = async () => {
+    const response = await fetch('/api/customers');
+    const body = await response.json();
+    return body;
+  }
 
-  const classes = useStyles();
-
-  return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
+  render() {
+    return (
+      <Table>
         <TableHead>
           <TableRow>
             <TableCell>번호</TableCell>
@@ -58,13 +34,15 @@ export default function App(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {customers.map((m, i) => {
+          {this.state.customers && this.state.customers.map((m, i) => {
             return (
               <Customer key={i} customer={m} />
             )
           })}
         </TableBody>
       </Table>
-    </Paper>
-  );
+    );
+  }
 }
+
+export default App;
