@@ -11,3 +11,11 @@ https://reactjs.org/redirect-to-codepen/hello-world
 Component.defaultProps = {
 
 }
+
+### API
+https://jsonplaceholder.typicode.com
+```js
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then(response => response.json())
+  .then(json => console.log(json))
+```
