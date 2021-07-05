@@ -3,7 +3,7 @@
 https://www.youtube.com/watch?v=y52Av3JxNW4&list=PLAHa1zfLtLiMukrBDWr-o0q-At7oARwXv
 
 
-### useState
+### 1. useState, useEffect
 
 
-### useEffect
+### 2. fetching data, custom hooks

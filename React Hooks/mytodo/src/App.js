@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import List from './List'
 
 const App = () => {
 
-  const [todos, setTodos] = useState(['js공부', 'css공부']);
+  const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setNewTodo(e.target.value);
@@ -18,9 +19,21 @@ const App = () => {
     setNewTodo('');
   }
 
+  const fetchInitialDate = async () => {
+    setLoading(true)
+    const response = await fetch('/todo');
+    const body = await response.json();
+    setLoading(false)
+    setTodos(body);
+  }
+
   useEffect(() => {
     console.log("새로운 내용이 렌더링")
   }, [todos])
+
+  useEffect(() => {
+    fetchInitialDate();
+  }, [])
 
   return (
     <>
@@ -30,7 +43,7 @@ const App = () => {
         <button onClick={handleButtonClick}>할일추가</button>
       </form>
 
-      <List todos={todos} />
+      <List todos={todos} loading={loading} />
     </>
   );
 }

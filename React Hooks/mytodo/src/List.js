@@ -1,11 +1,16 @@
 import React from 'react'
 
 const List = (props) => {
+
     return (
         <div>
-            {props.todos.map((m, i) => {
-                return <li key={i}>{m}</li>
-            })}
+            {props.loading ?
+                <li>Loading...</li>
+                :
+                props.todos.map((m, i) => {
+                    return <li key={i}>{m.title}</li>
+                })
+            }
         </div>
     )
 }
