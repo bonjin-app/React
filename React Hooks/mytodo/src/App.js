@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import List from './List'
 import useFetch from './useFetch';
+import Header from './Header';
 
 const App = () => {
 
@@ -31,6 +32,7 @@ const App = () => {
 
   return (
     <>
+      <Header todos={todos} />
       <h1>Todo Application</h1>
       <form action="">
         <input type="text" name="" value={newTodo} onChange={handleChange}></input>
