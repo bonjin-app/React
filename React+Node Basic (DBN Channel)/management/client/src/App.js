@@ -90,14 +90,17 @@ class App extends Component {
     super(props);
     this.state = {
       customers: '',
-      completed: 0
+      completed: 0,
+      keyword: '',
+      cellList: ["번호", "프로필 이미지", "이름", "생년월일", "성별", "직업", "설정"]
     }
   }
 
   stateRefresh = () => {
     this.setState({
       customers: '',
-      completed: 0
+      completed: 0,
+      keyword: ''
     })
 
     this.callApi()
@@ -125,9 +128,23 @@ class App extends Component {
     return body;
   }
 
+  handleValueChange = (e) => {
+    let nextState = {};
+    nextState[e.target.name] = e.target.value;
+    this.setState(nextState);
+  }
+
+  filteredComponents = (data) => {
+    data = data.filter((f) => {
+      return f.name.indexOf(this.state.keyword) > -1;
+    })
+    return data.map((m, i) => {
+      return <Customer key={i} customer={m} stateRefresh={this.stateRefresh}></Customer>
+    })
+  }
+
   render() {
     const { classes } = this.props;
-    const cellList = ["번호", "프로필 이미지", "이름", "생년월일", "성별", "직업", "설정"];
 
     return (
       <div className={classes.root}>
@@ -137,8 +154,7 @@ class App extends Component {
               edge="start"
               className={classes.menuButton}
               color="inherit"
-              aria-label="open drawer"
-            >
+              aria-label="open drawer">
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" noWrap>
@@ -154,6 +170,9 @@ class App extends Component {
                   root: classes.inputRoot,
                   input: classes.inputInput,
                 }}
+                name="keyword"
+                value={this.state.keyword}
+                onChange={this.handleValueChange}
                 inputProps={{ 'aria-label': 'search' }}
               />
             </div>
@@ -168,15 +187,11 @@ class App extends Component {
           <Table>
             <TableHead>
               <TableRow>
-                {cellList.map((m, i) => <TableCell key={i}>{m}</TableCell>)}
+                {this.state.cellList.map((m, i) => <TableCell key={i}>{m}</TableCell>)}
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.state.customers ? this.state.customers.map((m, i) => {
-                return (
-                  <Customer stateRefresh={this.stateRefresh} key={i} customer={m} />
-                )
-              }) :
+              {this.state.customers ? this.filteredComponents(this.state.customers) :
                 <TableRow>
                   <TableCell colSpan={6} align='center'>
                     {/* <CircularProgress variant="determinate" value={this.state.completed} /> */}
