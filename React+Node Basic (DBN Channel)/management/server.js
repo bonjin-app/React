@@ -19,13 +19,12 @@ const connection = mysql.createConnection({
 })
 connection.connect();
 
-
 const multer = require('multer');
 const upload = multer({ dest: './uploads' });
 
 app.get('/api/customers', (req, res) => {
     connection.query(
-        "SELECT * FROM customer",
+        "SELECT * FROM customer WHERE isDeleted = 0",
         (err, rows, fields) => {
             console.log('rows', rows)
             res.send(rows);
@@ -33,7 +32,7 @@ app.get('/api/customers', (req, res) => {
 })
 
 app.post('/api/customers', upload.single('image'), (req, res) => {
-    let sql = `INSERT INTO customer VALUES(null, ?, ?, ?, ?, ?)`;
+    let sql = `INSERT INTO customer VALUES(null, ?, ?, ?, ?, ?, now(), 0)`;
     let image = '/image/' + req.file.filename;
     let name = req.body.name;
     let birthDay = req.body.birthDay;
@@ -47,6 +46,15 @@ app.post('/api/customers', upload.single('image'), (req, res) => {
     connection.query(sql, params,
         (err, rows, field) => {
             console.log('err', err)
+            res.send(rows);
+        })
+})
+
+app.delete('/api/customer/:id', (req, res) => {
+    let sql = 'UPDATE customer SET isDeleted = 1 WHERE id = ?';
+    let params = [req.params.id];
+    connection.query(sql, params,
+        (err, rows, fields) => {
             res.send(rows);
         })
 })
