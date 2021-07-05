@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import List from './List'
+import useFetch from './useFetch';
 
 const App = () => {
 
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
-  const [loading, setLoading] = useState(false);
+
+  const loading = useFetch(setTodos, '/todo');
 
   const handleChange = (e) => {
     setNewTodo(e.target.value);
@@ -14,26 +16,18 @@ const App = () => {
 
   const handleButtonClick = (e) => {
     e.preventDefault();
-    setTodos([...todos, newTodo]);
+    setTodos([...todos, {
+      id: todos.length,
+      title: newTodo,
+      statud: 'todo'
+    }]);
 
     setNewTodo('');
-  }
-
-  const fetchInitialDate = async () => {
-    setLoading(true)
-    const response = await fetch('/todo');
-    const body = await response.json();
-    setLoading(false)
-    setTodos(body);
   }
 
   useEffect(() => {
     console.log("새로운 내용이 렌더링")
   }, [todos])
-
-  useEffect(() => {
-    fetchInitialDate();
-  }, [])
 
   return (
     <>
