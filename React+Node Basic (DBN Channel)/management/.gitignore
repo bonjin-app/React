@@ -3,6 +3,9 @@
 # database
 # database.json
 
+# upload
+/uploads
+
 # dependencies
 /node_modules
 /.pnp
