@@ -20,12 +20,20 @@ const connection = mysql.createConnection({
 connection.connect();
 
 app.get('/api/customers', (req, res) => {
-
-    connection.query("SELECT * FROM customer", (err, rows, fields) => {
-        console.log('rows', rows)
-        res.send(rows);
-    });
+    connection.query(
+        "SELECT * FROM customer",
+        (err, rows, fields) => {
+            console.log('rows', rows)
+            res.send(rows);
+        });
 })
+
+// app.post('/api/customers', (req, res) => {
+
+//     connection.query(
+//         "INSERT INTO() VALUES()"
+//     )
+// })
 
 
 app.listen(port, () => {
