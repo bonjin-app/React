@@ -5,9 +5,23 @@ import { Table, TableHead, TableBody, TableRow, TableCell, CircularProgress } fr
 import { Component } from 'react';
 class App extends Component {
 
-  state = {
-    customers: '',
-    completed: 0
+  constructor(props) {
+    super(props);
+    this.state = {
+      customers: '',
+      completed: 0
+    }
+  }
+
+  stateRefresh = () => {
+    this.setState({
+      customers: '',
+      completed: 0
+    })
+
+    this.callApi()
+      .then(res => this.setState({ customers: res }))
+      .catch(err => console.log(err))
   }
 
   componentDidMount() {
@@ -60,7 +74,7 @@ class App extends Component {
           </TableBody>
         </Table>
 
-        <CustomerAdd />
+        <CustomerAdd stateRefresh={this.stateRefresh} />
       </div>
     );
   }
