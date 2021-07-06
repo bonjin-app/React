@@ -1,4 +1,5 @@
 import React from 'react'
+import Item from './Item'
 
 const List = (props) => {
 
@@ -8,7 +9,7 @@ const List = (props) => {
                 <li>Loading...</li>
                 :
                 props.todos.map((m, i) => {
-                    return <li key={i}>{m.title}</li>
+                    return <Item key={i} todo={m} changeTodoStatus={props.changeTodoStatus}>{m.title}</Item>
                 })
             }
         </div>

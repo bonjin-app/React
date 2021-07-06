@@ -18,12 +18,27 @@ const App = () => {
   const handleButtonClick = (e) => {
     e.preventDefault();
     setTodos([...todos, {
-      id: todos.length,
+      id: todos.length + 1,
       title: newTodo,
       statud: 'todo'
     }]);
 
     setNewTodo('');
+  }
+
+  const changeTodoStatus = (id) => {
+    const updateTodo = todos.map((m) => {
+      if (m.id === +id) {
+        if (m.status === "done") {
+          m.status = "todo"
+        } else {
+          m.status = "done"
+        }
+      }
+      return m;
+    })
+
+    setTodos(updateTodo)
   }
 
   useEffect(() => {
@@ -39,7 +54,7 @@ const App = () => {
         <button onClick={handleButtonClick}>할일추가</button>
       </form>
 
-      <List todos={todos} loading={loading} />
+      <List todos={todos} loading={loading} changeTodoStatus={changeTodoStatus} />
     </>
   );
 }
