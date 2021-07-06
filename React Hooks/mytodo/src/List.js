@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Item from './Item'
+import { TodoContext } from './App'
 
 const List = (props) => {
+    const { todos, loading, changeTodoStatus } = useContext(TodoContext);
 
     return (
         <div>
-            {props.loading ?
+            {loading ?
                 <li>Loading...</li>
                 :
-                props.todos.map((m, i) => {
-                    return <Item key={i} todo={m} changeTodoStatus={props.changeTodoStatus}>{m.title}</Item>
+                todos.map((m, i) => {
+                    return <Item key={i} todo={m} changeTodoStatus={changeTodoStatus}>{m.title}</Item>
                 })
             }
         </div>

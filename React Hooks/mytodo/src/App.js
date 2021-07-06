@@ -50,20 +50,21 @@ const App = () => {
 
   return (
     <>
-      <TodoContext.Provider value={{ todos }}>
+      <TodoContext.Provider value={{
+        todos: todos,
+        input: newTodo,
+        onClick: handleButtonClick,
+        onChange: handleChange,
+        loading,
+        changeTodoStatus
+      }}>
         <Header />
 
         <h1>Todo Application</h1>
 
-        <Form
-          handleButtonClick={handleButtonClick}
-          input={newTodo}
-          onChange={handleChange} />
+        <Form />
 
-        <List
-          todos={todos}
-          loading={loading}
-          changeTodoStatus={changeTodoStatus} />
+        <List />
       </TodoContext.Provider>
     </>
   );
