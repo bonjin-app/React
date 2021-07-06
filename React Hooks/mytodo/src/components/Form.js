@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react'
-import { TodoContext } from '../App'
+import { TodoContext } from '../TodoStore'
 
 const Form = (props) => {
     const inputRef = useRef(false)
