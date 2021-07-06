@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import './App.css';
 import List from './List'
 import useFetch from './useFetch';
 import Header from './Header';
+import Form from './components/Form';
+
+export const TodoContext = createContext();
 
 const App = () => {
 
@@ -47,14 +50,21 @@ const App = () => {
 
   return (
     <>
-      <Header todos={todos} />
-      <h1>Todo Application</h1>
-      <form action="">
-        <input type="text" name="" value={newTodo} onChange={handleChange}></input>
-        <button onClick={handleButtonClick}>할일추가</button>
-      </form>
+      <TodoContext.Provider value={{ todos }}>
+        <Header />
 
-      <List todos={todos} loading={loading} changeTodoStatus={changeTodoStatus} />
+        <h1>Todo Application</h1>
+
+        <Form
+          handleButtonClick={handleButtonClick}
+          input={newTodo}
+          onChange={handleChange} />
+
+        <List
+          todos={todos}
+          loading={loading}
+          changeTodoStatus={changeTodoStatus} />
+      </TodoContext.Provider>
     </>
   );
 }
