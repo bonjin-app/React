@@ -3,7 +3,7 @@ import Item from './Item'
 import { TodoContext } from './App'
 
 const List = (props) => {
-    const { todos, loading, changeTodoStatus } = useContext(TodoContext);
+    const { todos, loading, dispatch } = useContext(TodoContext);
 
     return (
         <div>
@@ -11,7 +11,10 @@ const List = (props) => {
                 <li>Loading...</li>
                 :
                 todos.map((m, i) => {
-                    return <Item key={i} todo={m} changeTodoStatus={changeTodoStatus}>{m.title}</Item>
+                    return <Item
+                        key={i}
+                        todo={m}
+                        dispatch={dispatch}>{m.title}</Item>
                 })
             }
         </div>

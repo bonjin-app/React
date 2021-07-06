@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from 'react';
+import { useEffect, createContext, useReducer } from 'react';
 import './App.css';
 import List from './List'
 import useFetch from './useFetch';
@@ -7,45 +7,55 @@ import Form from './components/Form';
 
 export const TodoContext = createContext();
 
-const App = () => {
+const todoReducer = (state, action) => {
+  switch (action.type) {
+    case "ADD_TODO":
+      console.log('ADD_TODO');
+      return [...state, {
+        id: state.length + 1,
+        title: action.payload,
+        status: 'todo'
+      }];
 
-  const [todos, setTodos] = useState([]);
-  const loading = useFetch(setTodos, '/todo');
+    case "SET_INIT_DATA":
+      console.log('SET_INIT_DATA');
+      return action.payload;
 
-  const handleButtonClick = (todo) => {
-    setTodos([...todos, {
-      id: todos.length + 1,
-      title: todo,
-      statud: 'todo'
-    }]);
-  }
+    case "CHANGE_TODO_STATUS":
+      console.log('CHANGE_TODO_STATUS');
 
-  const changeTodoStatus = (id) => {
-    const updateTodo = todos.map((m) => {
-      if (m.id === +id) {
-        if (m.status === "done") {
-          m.status = "todo"
-        } else {
-          m.status = "done"
+      // let newState = Object.assign({}, state);
+      // let newState = [...state];
+      return state.map(m => {
+        // 복사 하지 않으면 변경이 정상적으로 이뤄지지 않는다.
+        let todo = Object.assign({}, m);
+        if (todo.id === +action.payload) {
+          if (todo.status === "done") todo.status = "todo";
+          else todo.status = "done";
         }
-      }
-      return m;
-    })
+        console.log('todo', todo);
+        return todo;
+      });
 
-    setTodos(updateTodo)
+    default:
+      break;
   }
+}
 
-  useEffect(() => {
-    console.log("새로운 내용이 렌더링")
-  }, [todos])
+const App = () => {
+  const [todosState, todosDispatch] = useReducer(todoReducer, [])
+
+  const setupInitData = (initData) => {
+    todosDispatch({ type: "SET_INIT_DATA", payload: initData })
+  }
+  const loading = useFetch(setupInitData, '/todo');
 
   return (
     <>
       <TodoContext.Provider value={{
-        todos: todos,
-        onClick: handleButtonClick,
+        todos: todosState,
         loading,
-        changeTodoStatus
+        dispatch: todosDispatch
       }}>
         <Header />
 

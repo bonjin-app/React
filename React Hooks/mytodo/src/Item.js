@@ -4,10 +4,10 @@ import './Item.css';
 const Item = (props) => {
     const handleToggle = (e) => {
         const id = e.target.dataset.id;
-        props.changeTodoStatus(id);
+        props.dispatch({ type: "CHANGE_TODO_STATUS", payload: id });
     }
 
-    const itemClassName = props.todo.status === 'done' ? "done" : "";
+    const itemClassName = props.todo.status === 'done' ? 'done' : '';
 
     return (
         <>

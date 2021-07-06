@@ -3,12 +3,12 @@ import { TodoContext } from '../App'
 
 const Form = (props) => {
     const inputRef = useRef(false)
-    const { onClick } = useContext(TodoContext)
+    const { dispatch } = useContext(TodoContext)
 
     const addTodoData = (e) => {
         e.preventDefault();
-        onClick(inputRef.current.value);
 
+        dispatch({ type: 'ADD_TODO', payload: inputRef.current.value })
         inputRef.current.value = '';
     }
     return (
