@@ -1,13 +1,23 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import { TodoContext } from '../App'
 
 const Form = (props) => {
-    const { input, onClick, onChange } = useContext(TodoContext)
+    const inputRef = useRef(false)
+    const { onClick } = useContext(TodoContext)
+
+    const addTodoData = (e) => {
+        e.preventDefault();
+        onClick(inputRef.current.value);
+
+        inputRef.current.value = '';
+    }
     return (
         <div>
             <form action="">
-                <input type="text" name="" value={input} onChange={onChange}></input>
-                <button onClick={onClick}>할일추가</button>
+                <input
+                    type="text"
+                    ref={inputRef}></input>
+                <button onClick={addTodoData}>할일추가</button>
             </form>
         </div>
     )

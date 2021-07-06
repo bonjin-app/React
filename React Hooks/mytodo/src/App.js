@@ -10,23 +10,14 @@ export const TodoContext = createContext();
 const App = () => {
 
   const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState('');
-
   const loading = useFetch(setTodos, '/todo');
 
-  const handleChange = (e) => {
-    setNewTodo(e.target.value);
-  }
-
-  const handleButtonClick = (e) => {
-    e.preventDefault();
+  const handleButtonClick = (todo) => {
     setTodos([...todos, {
       id: todos.length + 1,
-      title: newTodo,
+      title: todo,
       statud: 'todo'
     }]);
-
-    setNewTodo('');
   }
 
   const changeTodoStatus = (id) => {
@@ -52,9 +43,7 @@ const App = () => {
     <>
       <TodoContext.Provider value={{
         todos: todos,
-        input: newTodo,
         onClick: handleButtonClick,
-        onChange: handleChange,
         loading,
         changeTodoStatus
       }}>
