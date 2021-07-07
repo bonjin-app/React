@@ -10,11 +10,7 @@ import { Box, IconButton, Link } from '@material-ui/core'
 import Icon from '@mdi/react'
 
 //icons
-import {
-    mdiFacebook as FacebookIcon,
-    mdiTwitter as TwitterIcon,
-    mdiGithub as GithubIcon,
-} from '@mdi/js'
+import { mdiFacebook as FacebookIcon, mdiTwitter as TwitterIcon, mdiGithub as GithubIcon, } from '@mdi/js'
 
 // styles
 import useStyles from "./styles";
@@ -25,6 +21,7 @@ import Sidebar from "../Sidebar";
 
 // pages
 import Dashboard from "../../pages/dashboard";
+import Notice from "../../pages/notice";
 // import Typography from "../../pages/typography";
 // import Notifications from "../../pages/notifications";
 // import Maps from "../../pages/maps";
@@ -54,7 +51,7 @@ function Layout(props) {
                     <div className={classes.fakeToolbar} />
                     <Switch>
                         <Route path="/app/dashboard" component={Dashboard} />
-                        <Route path="/app/notice" component={Dashboard} />
+                        <Route path="/app/notice" component={Notice} />
                         <Route path="/app/faq" component={Dashboard} />
                         {/* <Route path="/app/typography" component={Typography} />
                         <Route path="/app/tables" component={Tables} />
