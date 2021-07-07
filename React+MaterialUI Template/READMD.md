@@ -9,6 +9,9 @@ https://medium.com/@tomlarge/private-routes-with-react-router-dom-28e9f40c7146
 - react-router-dom
 https://www.npmjs.com/package/react-router-dom
 
+예시:
+https://tantangerine.tistory.com/7
+
 - classnames
 https://www.npmjs.com/package/classnames
 
@@ -41,3 +44,9 @@ import Login from '../login/Login.js'
     "private": true
 }
 ```
+
+
+
+# Node
+
+sequelize
