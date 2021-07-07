@@ -4,6 +4,7 @@ const logger = require('morgan');
 const db = require('./models');
 
 class App {
+    // Init
     constructor() {
         this.app = express();
 
@@ -12,9 +13,15 @@ class App {
 
         // 미들웨어 셋팅
         this.setMiddleWare();
+
+        // 라우팅
+        this.getRouting();
+
+        // 에러처리
+        this.errorHandler();
     }
 
-    // DB authentication
+    // db 접속
     dbConnection() {
         db.sequelize.authenticate()
             .then(() => {
@@ -34,6 +41,20 @@ class App {
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: false }));
 
+    }
+
+    // 라우팅
+    getRouting() {
+        this.app.use(require('./controllers'))
+    }
+
+    // 에러처리
+    errorHandler() {
+        this.app.use((err, req, res, _) => {
+            res.status(500).send({
+                success: false
+            })
+        });
     }
 }
 module.exports = new App().app;
