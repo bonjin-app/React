@@ -33,7 +33,7 @@ function Login(props) {
     var [error, setError] = useState(null);
     var [activeTabId, setActiveTabId] = useState(0);
     var [nameValue, setNameValue] = useState("");
-    var [loginValue, setLoginValue] = useState("admin@bonjin.co.kr");
+    var [loginValue, setLoginValue] = useState("bonjin");
     var [passwordValue, setPasswordValue] = useState("password");
 
     return (
@@ -59,15 +59,6 @@ function Login(props) {
                             <Typography variant="h1" className={classes.greeting}>
                                 Good Morning, User
                             </Typography>
-                            <Button size="large" className={classes.googleButton}>
-                                <img src={google} alt="google" className={classes.googleIcon} />
-                                &nbsp;Sign in with Google
-                            </Button>
-                            <div className={classes.formDividerContainer}>
-                                <div className={classes.formDivider} />
-                                <Typography className={classes.formDividerWord}>or</Typography>
-                                <div className={classes.formDivider} />
-                            </div>
                             <Fade in={error}>
                                 <Typography color="secondary" className={classes.errorMessage}>
                                     Something is wrong with your login or password :(
@@ -226,21 +217,6 @@ function Login(props) {
                                     </Button>
                                 )}
                             </div>
-                            <div className={classes.formDividerContainer}>
-                                <div className={classes.formDivider} />
-                                <Typography className={classes.formDividerWord}>or</Typography>
-                                <div className={classes.formDivider} />
-                            </div>
-                            <Button
-                                size="large"
-                                className={classnames(
-                                    classes.googleButton,
-                                    classes.googleButtonCreating,
-                                )}
-                            >
-                                <img src={google} alt="google" className={classes.googleIcon} />
-                                &nbsp;Sign in with Google
-                            </Button>
                         </React.Fragment>
                     )}
                 </div>
