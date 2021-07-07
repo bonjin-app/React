@@ -20,7 +20,7 @@ import {
 import useStyles from "./styles";
 
 // components
-// import Header from "../Header";
+import Header from "../Header";
 // import Sidebar from "../Sidebar";
 
 // pages
@@ -44,8 +44,8 @@ function Layout(props) {
     return (
         <div className={classes.root}>
             <>
-                {/* <Header history={props.history} />
-                <Sidebar /> */}
+                <Header history={props.history} />
+                {/* <Sidebar /> */}
                 <div
                     className={classnames(classes.content, {
                         [classes.contentShift]: layoutState.isSidebarOpened,

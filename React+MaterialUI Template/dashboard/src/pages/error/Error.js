@@ -24,8 +24,7 @@ export default Error = () => {
                 <Typography
                     variant="h1"
                     color="primary"
-                    className={classnames(classes.textRow, classes.errorCode)}
-                >
+                    className={classnames(classes.textRow, classes.errorCode)} >
                     404
                 </Typography>
                 <Typography variant="h5" color="primary" className={classes.textRow}>
@@ -35,8 +34,7 @@ export default Error = () => {
                     variant="h6"
                     color="text"
                     colorBrightness="secondary"
-                    className={classnames(classes.textRow, classes.safetyText)}
-                >
+                    className={classnames(classes.textRow, classes.safetyText)} >
                     But we're here to bring you back to safety
                 </Typography>
                 <Button
@@ -45,8 +43,7 @@ export default Error = () => {
                     component={Link}
                     to="/"
                     size="large"
-                    className={classes.backButton}
-                >
+                    className={classes.backButton} >
                     Back to Home
                 </Button>
             </Paper>
