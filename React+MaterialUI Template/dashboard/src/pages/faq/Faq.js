@@ -67,11 +67,11 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function Notice() {
+export default function Faq() {
     const classes = useStyles();
     return (
         <>
-            <PageTitle title="Notice" />
+            <PageTitle title="FAQ" />
             <Grid container spacing={4}>
                 <Grid item xs={12}>
                     <Widget title="FAQ Table" upperTitle noBodyPadding bodyClass={classes.tableOverflow}>
