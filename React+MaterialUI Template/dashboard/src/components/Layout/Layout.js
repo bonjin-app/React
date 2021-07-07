@@ -21,7 +21,7 @@ import useStyles from "./styles";
 
 // components
 import Header from "../Header";
-// import Sidebar from "../Sidebar";
+import Sidebar from "../Sidebar";
 
 // pages
 import Dashboard from "../../pages/dashboard";
@@ -45,7 +45,7 @@ function Layout(props) {
         <div className={classes.root}>
             <>
                 <Header history={props.history} />
-                {/* <Sidebar /> */}
+                <Sidebar />
                 <div
                     className={classnames(classes.content, {
                         [classes.contentShift]: layoutState.isSidebarOpened,
@@ -54,6 +54,8 @@ function Layout(props) {
                     <div className={classes.fakeToolbar} />
                     <Switch>
                         <Route path="/app/dashboard" component={Dashboard} />
+                        <Route path="/app/notice" component={Dashboard} />
+                        <Route path="/app/faq" component={Dashboard} />
                         {/* <Route path="/app/typography" component={Typography} />
                         <Route path="/app/tables" component={Tables} />
                         <Route path="/app/notifications" component={Notifications} />
