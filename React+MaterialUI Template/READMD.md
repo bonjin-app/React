@@ -21,3 +21,23 @@ https://www.npmjs.com/package/tinycolor2
 @material-ui/styles
 @mdi/js
 @mdi/react
+
+
+### package.json
+```js
+import Login from '../login'
+```
+위처럼 import 하는 방법과 아래의 방법이 있다.
+```js
+import Login from '../login/Login.js'
+```
+폴더 경로만 입력하고 package.json을 읽어서 main을 찾는다.
+
+```js
+{
+    "name": "Login",
+    "version": "0.0.0",
+    "main": "Login.js",
+    "private": true
+}
+```
