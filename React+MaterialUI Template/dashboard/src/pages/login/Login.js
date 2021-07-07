@@ -33,14 +33,14 @@ function Login(props) {
     var [error, setError] = useState(null);
     var [activeTabId, setActiveTabId] = useState(0);
     var [nameValue, setNameValue] = useState("");
-    var [loginValue, setLoginValue] = useState("admin@flatlogic.com");
+    var [loginValue, setLoginValue] = useState("admin@bonjin.co.kr");
     var [passwordValue, setPasswordValue] = useState("password");
 
     return (
         <Grid container className={classes.container}>
             <div className={classes.logotypeContainer}>
                 <img src={logo} alt="logo" className={classes.logotypeImage} />
-                <Typography className={classes.logotypeText}>Material Admin</Typography>
+                <Typography className={classes.logotypeText}>Administrator</Typography>
             </div>
             <div className={classes.formContainer}>
                 <div className={classes.form}>
@@ -245,7 +245,7 @@ function Login(props) {
                     )}
                 </div>
                 <Typography color="primary" className={classes.copyright}>
-                    © 2014-{new Date().getFullYear()} <a style={{ textDecoration: 'none', color: 'inherit' }} href="https://flatlogic.com" rel="noopener noreferrer" target="_blank">Flatlogic</a>, LLC. All rights reserved.
+                    © 2021-{new Date().getFullYear()} <a style={{ textDecoration: 'none', color: 'inherit' }} href="https://bonjin.co.kr" rel="noopener noreferrer" target="_blank">BONJIN</a>, LLC. All rights reserved.
                 </Typography>
             </div>
         </Grid>
