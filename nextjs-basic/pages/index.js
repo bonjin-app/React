@@ -18,19 +18,8 @@ export default function Home({ posts }) {
 }
 
 // Fetch data on each request.pre - render for Server - side Rendering
-export const getServerSideProps = async () => {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_end=10`);
-  const posts = await res.json();
-
-  return {
-    props: {
-      posts: posts,
-    }
-  }
-}
-
-// export const getStaticSideProps = async () => {
-//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_end=10`);
+// export const getServerSideProps = async () => {
+//   const res = await fetch(`http://localhost:8080/api/posts`);
 //   const posts = await res.json();
 
 //   return {
@@ -39,3 +28,15 @@ export const getServerSideProps = async () => {
 //     }
 //   }
 // }
+
+export const getStaticProps = async () => {
+  const res = await fetch(`http://localhost:8080/api/posts`);
+  const posts = await res.json();
+
+  return {
+    props: {
+      posts: posts,
+    },
+    revalidate: 20,
+  }
+}
