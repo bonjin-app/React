@@ -1,0 +1,10 @@
+.photo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+}
+
+.photo li {
+    display: flex;
+    flex-direction: column;
+}
