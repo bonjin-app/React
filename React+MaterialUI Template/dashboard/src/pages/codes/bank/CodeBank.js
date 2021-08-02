@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Checkbox} from '@material-ui/core';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Checkbox, Button} from '@material-ui/core';
 import { makeStyles } from "@material-ui/styles";
+import { Link } from 'react-router-dom';
 import { Pagination } from '@material-ui/lab';
 import axios from 'axios'
 
@@ -39,6 +40,17 @@ export default function CodeBank() {
     return (
         <>
             <PageTitle title="은행 코드" />
+            <div style={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                marginBottom: 24,
+            }}>
+                <Link
+                    to="/app/code/bank/register"
+                    >
+                    <Button color="primary" variant="contained">ADD</Button>
+                </Link>
+            </div>
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>

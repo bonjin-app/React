@@ -1,0 +1,6 @@
+{
+    "name": "CodeBankRegister",
+    "version": "1.0.0",
+    "private": true,
+    "main": "CodeBankRegister.js"
+}

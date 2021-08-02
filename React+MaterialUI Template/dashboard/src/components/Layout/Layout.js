@@ -23,6 +23,7 @@ import Product from "../../pages/product";
 
 import CodeNormal from '../../pages/codes/normal'
 import CodeBank from '../../pages/codes/bank'
+import CodeBankRegister from "../../pages/codes/bank/register";
 import CodeJob from '../../pages/codes/job'
 
 // context
@@ -46,17 +47,18 @@ function Layout(props) {
                 >
                     <div className={classes.fakeToolbar} />
                     <Switch>
-                        <Route path="/app/dashboard" component={Dashboard} />
-                        <Route path="/app/product" component={Product} />
+                        <Route exact path="/app/dashboard" component={Dashboard} />
+                        <Route exact path="/app/product" component={Product} />
 
                         {/* Board */}
-                        <Route path="/app/board/notice" component={Notice} />
-                        <Route path="/app/board/faq" component={Faq} />
+                        <Route exact path="/app/board/notice" component={Notice} />
+                        <Route exact path="/app/board/faq" component={Faq} />
 
                         {/* Code */}
-                        <Route path="/app/code/normal" component={CodeNormal} />
-                        <Route path="/app/code/bank" component={CodeBank} />
-                        <Route path="/app/code/job" component={CodeJob} />
+                        <Route exact path="/app/code/normal" component={CodeNormal} />
+                        <Route exact path="/app/code/bank" component={CodeBank} />
+                        <Route exact path="/app/code/bank/register" component={CodeBankRegister} />
+                        <Route exact path="/app/code/job" component={CodeJob} />
                     </Switch>
                     <Box
                         mt={5}
