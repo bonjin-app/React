@@ -19,6 +19,7 @@ import Sidebar from "../Sidebar";
 import Dashboard from "../../pages/dashboard";
 import Notice from "../../pages/notice";
 import Faq from "../../pages/faq";
+import Product from "../../pages/product";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -44,6 +45,7 @@ function Layout(props) {
                         <Route path="/app/dashboard" component={Dashboard} />
                         <Route path="/app/notice" component={Notice} />
                         <Route path="/app/faq" component={Faq} />
+                        <Route path="/app/product" component={Product} />
                     </Switch>
                     <Box
                         mt={5}
