@@ -21,6 +21,8 @@ import Notice from "../../pages/notice";
 import Faq from "../../pages/faq";
 import Product from "../../pages/product";
 
+import CodeNormal from '../../pages/codes/normal'
+
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
@@ -43,9 +45,14 @@ function Layout(props) {
                     <div className={classes.fakeToolbar} />
                     <Switch>
                         <Route path="/app/dashboard" component={Dashboard} />
+                        <Route path="/app/product" component={Product} />
+
+                        {/* Board */}
                         <Route path="/app/board/notice" component={Notice} />
                         <Route path="/app/board/faq" component={Faq} />
-                        <Route path="/app/product" component={Product} />
+
+                        {/* Code */}
+                        <Route path="/app/code/normal" component={CodeNormal} />
                     </Switch>
                     <Box
                         mt={5}

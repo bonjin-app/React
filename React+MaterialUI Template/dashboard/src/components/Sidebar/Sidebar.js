@@ -29,17 +29,8 @@ import SidebarLink from "./components/SidebarLink/SidebarLink";
 import { useLayoutState, useLayoutDispatch, toggleSidebar, } from "../../context/LayoutContext";
 
 const structure = [
-    { type: 'title', label: 'PAGES' },
+    { type: 'title', label: 'MANAGEMENT' },
     { label: "대시보드", link: "/app/dashboard", icon: <DashboardIcon /> },
-    {
-        label: "코드 관리", link: "/app/code", icon: <CodeIcon />,
-        children: [
-            { label: "전체 코드", link: "/app/code/normal" },
-            { label: "은행 코드", link: "/app/code/bank" },
-            { label: "직업 코드", link: "/app/code/job" },
-        ],
-    },
-    { label: "메뉴 관리", link: "/app/menu", icon: <ListIcon /> },
     {
         label: "이체 관리", link: "/app/transfer", icon: <CompareArrowsIcon />,
         children: [
@@ -55,6 +46,17 @@ const structure = [
             { label: "계좌 개설 조회", link: "/app/account/kakao" },
         ],
     },
+    { type: "divider" },
+    { type: 'title', label: 'APP' },
+    {
+        label: "코드 관리", link: "/app/code", icon: <CodeIcon />,
+        children: [
+            { label: "전체 코드", link: "/app/code/normal" },
+            { label: "은행 코드", link: "/app/code/bank" },
+            { label: "직업 코드", link: "/app/code/job" },
+        ],
+    },
+    { label: "메뉴 관리", link: "/app/menu", icon: <ListIcon /> },
     {
         label: "게시판 관리", link: "/app/board", icon: <NotificationsIcon />,
         children: [
