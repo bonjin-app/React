@@ -1,37 +1,31 @@
 import React from 'react'
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import {FormControl, InputLabel, OutlinedInput, Card, CardContent, InputAdornment} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
     },
-    textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: '25ch',
-    },
 }));
 
 const CodeBankRegister = () => {
     const classes = useStyles();
-    
+
     return (
-        <div className={classes.root}>
-            <TextField
-                id="standard-full-width"
-                label="Label"
-                style={{ margin: 8 }}
-                placeholder="Placeholder"
-                helperText="Full width!"
-                fullWidth
-                margin="normal"
-                InputLabelProps={{
-                    shrink: true,
-                }}
-            />
-        </div>
+        <Card className={classes.root}>
+            <CardContent>
+                <FormControl fullWidth className={classes.margin} variant="outlined">
+                    <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+                    <OutlinedInput
+                        id="outlined-adornment-amount"
+                        startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                        labelWidth={60}
+                    />
+                </FormControl>
+            </CardContent>
+        </Card>
     )
 }
 
