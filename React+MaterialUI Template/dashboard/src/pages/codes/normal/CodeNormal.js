@@ -1,42 +1,70 @@
 import React from "react";
-import { Table, TableContainer, TableBody, TableCell, TableHead, TableRow, Paper} from "@material-ui/core";
-import { withStyles, makeStyles } from "@material-ui/styles";
+import { Grid} from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 import {Pagination} from '@material-ui/lab';
 
 // components
+import Widget from "../../../components/Widget";
 import PageTitle from "../../../components/PageTitle";
+import Table from "../../../components/Table";
 
-const StyledTableCell = withStyles((theme) => ({
-    head: {
-        backgroundColor: theme.palette.primary.main,
-        color: "white",
+const datas = [
+    {
+        id: 0,
+        name: "Mark Otto",
+        email: "ottoto@wxample.com",
+        product: "ON the Road",
+        price: "$25 224.2",
+        date: "11 May 2017",
+        city: "Otsego",
+        status: "Sent"
     },
-    body: {
-        fontSize: 14,
+    {
+        id: 1,
+        name: "Jacob Thornton",
+        email: "thornton@wxample.com",
+        product: "HP Core i7",
+        price: "$1 254.2",
+        date: "4 Jun 2017",
+        city: "Fivepointville",
+        status: "Sent"
+    },
+    {
+        id: 2,
+        name: "Larry the Bird",
+        email: "bird@wxample.com",
+        product: "Air Pro",
+        price: "$1 570.0",
+        date: "27 Aug 2017",
+        city: "Leadville North",
+        status: "Pending"
+    },
+    {
+        id: 3,
+        name: "Joseph May",
+        email: "josephmay@wxample.com",
+        product: "Version Control",
+        price: "$5 224.5",
+        date: "19 Feb 2018",
+        city: "Seaforth",
+        status: "Declined"
+    },
+    {
+        id: 4,
+        name: "Peter Horadnia",
+        email: "horadnia@wxample.com",
+        product: "Let's Dance",
+        price: "$43 594.7",
+        date: "1 Mar 2018",
+        city: "Hanoverton",
+        status: "Sent"
     }
-}))(TableCell);
-
-const StyledTableRow = withStyles((theme) => ({
-    root: {
-        '&:nth-of-type(odd)': {
-            backgroundColor: theme.palette.action.hover,
-        },
-    },
-}))(TableRow);
-
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
 const useStyles = makeStyles({
+    tableOverflow: {
+        overflow: 'auto'
+    },
     table: {
         minWidth: 700,
     },
@@ -53,33 +81,18 @@ export default function CodeNormal() {
     return (
         <>
             <PageTitle title="전체 코드" />
-            <TableContainer component={Paper}>
-                <Table className={classes.table} aria-label="customized table">
-                    <TableHead>
-                    <TableRow>
-                        <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-                        <StyledTableCell align="right">Calories</StyledTableCell>
-                        <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-                        <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-                        <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
-                    </TableRow>
-                    </TableHead>
-                    <TableBody>
-                    {rows.map((row) => (
-                        <StyledTableRow key={row.name}>
-                        <StyledTableCell component="th" scope="row">
-                            {row.name}
-                        </StyledTableCell>
-                        <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                        <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                        <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                        <StyledTableCell align="right">{row.protein}</StyledTableCell>
-                        </StyledTableRow>
-                    ))}
-                    </TableBody>
-                </Table>
-                
-            </TableContainer>
+            <Grid container spacing={4}>
+                <Grid item xs={12}>
+                    <Widget
+                        title="Table"
+                        upperTitle
+                        noBodyPadding
+                        bodyClass={classes.tableOverflow}
+                        disableWidgetMenu>
+                        <Table data={datas} />
+                    </Widget>
+                </Grid>
+            </Grid>
             <Pagination className={classes.pagenation} count={10} color="primary" />
         </>
     );
