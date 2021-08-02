@@ -15,6 +15,18 @@ export default makeStyles(theme => ({
     },
     linkActive: {
         backgroundColor: theme.palette.background.light,
+        '&:before': {
+            top: 0,
+            right: 0,
+            width: 3,
+            bottom: 0,
+            content: "''",
+            display: 'block',
+            position: 'absolute',
+            borderTopLeftRadius: 4,
+            borderBottomLeftRadius: 4,
+            backgroundColor: theme.palette.primary.main
+        }
     },
     linkNested: {
         paddingLeft: 0,

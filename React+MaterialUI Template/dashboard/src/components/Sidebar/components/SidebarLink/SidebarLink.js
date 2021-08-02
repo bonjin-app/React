@@ -102,7 +102,7 @@ export default function SidebarLink({
                         [classes.linkIconActive]: isLinkActive,
                     })}
                 >
-                    {nested ? <Dot color={isLinkActive && "primary"} /> : icon}
+                    {nested ? <Dot color={isLinkActive && "primary"} size={isLinkActive ? null : "small"} /> : icon}
                 </ListItemIcon>
                 <ListItemText
                     classes={{
@@ -123,6 +123,11 @@ export default function SidebarLink({
                 component={link && Link}
                 onClick={toggleCollapse}
                 className={classes.link}
+                classes={{
+                    root: classnames(classes.linkRoot, {
+                        [classes.linkActive]: isLinkActive
+                    }),
+                }}
                 to={link}
                 disableRipple
             >
