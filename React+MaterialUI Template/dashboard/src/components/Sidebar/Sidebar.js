@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Drawer, IconButton, List } from "@material-ui/core";
 import {
-    Home as HomeIcon,
+    Dashboard as DashboardIcon,
     NotificationsNone as NotificationsIcon,
     HelpOutline as FAQIcon,
     Policy as PolicyIcon,
     Ballot as BallotIcon,
     ArrowBack as ArrowBackIcon,
+    List as ListIcon,
+    AccountBalanceWallet as AccountBalanceWalletIcon,
+    People as PeopleIcon,
+    AccountBalance as AccountBalanceIcon,
+    Code as CodeIcon,
+    Web as WebIcon,
+    CompareArrows as CompareArrowsIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -22,16 +29,18 @@ import SidebarLink from "./components/SidebarLink/SidebarLink";
 import { useLayoutState, useLayoutDispatch, toggleSidebar, } from "../../context/LayoutContext";
 
 const structure = [
-    { id: 0, type: 'title', label: 'PAGES' },
-    { id: 1, label: "홈", link: "/app/dashboard", icon: <HomeIcon /> },
-    { id: 6, label: "상품", link: "/app/product", icon: <BallotIcon /> },
-    { id: 6, label: "약관", link: "/app/policy", icon: <PolicyIcon /> },
-
-    { id: 3, type: "title", label: "HELP" },
-    { id: 4, label: "공지사항", link: "/app/notice", icon: <NotificationsIcon /> },
-    { id: 5, label: "FAQ", link: "/app/faq", icon: <FAQIcon /> },
-
-
+    { type: 'title', label: 'PAGES' },
+    { label: "대시보드", link: "/app/dashboard", icon: <DashboardIcon /> },
+    { label: "코드 관리", link: "/app/code", icon: <CodeIcon /> },
+    { label: "메뉴 관리", link: "/app/menu", icon: <ListIcon /> },
+    { label: "이체 관리", link: "/app/transfer", icon: <CompareArrowsIcon /> },
+    { label: "계좌 관리", link: "/app/account", icon: <AccountBalanceWalletIcon /> },
+    { label: "게시판 관리", link: "/app/board", icon: <NotificationsIcon /> },
+    { label: "운영 관리", link: "/app/operation", icon: <BallotIcon /> },
+    { label: "상품 관리", link: "/app/product", icon: <WebIcon /> },
+    { label: "대출 관리", link: "/app/loan", icon: <AccountBalanceIcon /> },
+    { label: "회원 관리", link: "/app/user", icon: <PeopleIcon /> },
+    { label: "약관 관리", link: "/app/policy", icon: <PolicyIcon /> },
 ];
 
 function Sidebar({ location }) {
