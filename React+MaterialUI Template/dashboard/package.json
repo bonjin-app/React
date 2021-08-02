@@ -9,6 +9,7 @@
     "@material-ui/styles": "^4.11.3",
     "@mdi/js": "^5.9.55",
     "@mdi/react": "^1.4.0",
+    "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "font-awesome": "^4.7.0",
     "react": "^17.0.2",
@@ -41,5 +42,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://192.168.0.236:19020"
 }

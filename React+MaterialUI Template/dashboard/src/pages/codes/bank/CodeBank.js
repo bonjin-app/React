@@ -1,65 +1,11 @@
-import React from "react";
-import { Grid} from "@material-ui/core";
+import React, {useEffect, useState} from "react";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Checkbox} from '@material-ui/core';
 import { makeStyles } from "@material-ui/styles";
-import {Pagination} from '@material-ui/lab';
+import { Pagination } from '@material-ui/lab';
+import axios from 'axios'
 
 // components
-import Widget from "../../../components/Widget";
 import PageTitle from "../../../components/PageTitle";
-import Table from "../../../components/Table";
-
-const datas = [
-    {
-        id: 0,
-        name: "Mark Otto",
-        email: "ottoto@wxample.com",
-        product: "ON the Road",
-        price: "$25 224.2",
-        date: "11 May 2017",
-        city: "Otsego",
-        status: "Sent"
-    },
-    {
-        id: 1,
-        name: "Jacob Thornton",
-        email: "thornton@wxample.com",
-        product: "HP Core i7",
-        price: "$1 254.2",
-        date: "4 Jun 2017",
-        city: "Fivepointville",
-        status: "Sent"
-    },
-    {
-        id: 2,
-        name: "Larry the Bird",
-        email: "bird@wxample.com",
-        product: "Air Pro",
-        price: "$1 570.0",
-        date: "27 Aug 2017",
-        city: "Leadville North",
-        status: "Pending"
-    },
-    {
-        id: 3,
-        name: "Joseph May",
-        email: "josephmay@wxample.com",
-        product: "Version Control",
-        price: "$5 224.5",
-        date: "19 Feb 2018",
-        city: "Seaforth",
-        status: "Declined"
-    },
-    {
-        id: 4,
-        name: "Peter Horadnia",
-        email: "horadnia@wxample.com",
-        product: "Let's Dance",
-        price: "$43 594.7",
-        date: "1 Mar 2018",
-        city: "Hanoverton",
-        status: "Sent"
-    }
-];
 
 const useStyles = makeStyles({
     tableOverflow: {
@@ -78,21 +24,69 @@ const useStyles = makeStyles({
 export default function CodeBank() {
     const classes = useStyles();
 
+    const [codes, setCodes] = useState([]);
+
+    useEffect(() => {
+        _getCode();
+
+    }, [])
+
+    const _getCode = async () => {
+        const response = await axios.get('/api/admin/codes/bank');
+        setCodes(response.data.data);
+    }
+
     return (
         <>
             <PageTitle title="은행 코드" />
-            <Grid container spacing={4}>
-                <Grid item xs={12}>
-                    <Widget
-                        title="Table"
-                        upperTitle
-                        noBodyPadding
-                        bodyClass={classes.tableOverflow}
-                        disableWidgetMenu>
-                        <Table data={datas} />
-                    </Widget>
-                </Grid>
-            </Grid>
+            <TableContainer component={Paper}>
+                <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                    <TableRow>
+                        <TableCell>No.</TableCell>
+                        <TableCell align="center">Type.</TableCell>
+                        <TableCell align="center">Code.</TableCell>
+                        <TableCell align="center">Name.</TableCell>
+                        <TableCell align="center">Image Url.</TableCell>
+                        <TableCell align="center">Normal.</TableCell>
+                        <TableCell align="center">Transfer.</TableCell>
+                        <TableCell align="center">LoanAuto.</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    {codes.map((m) => (
+                        <TableRow key={m.id} hover>
+                            <TableCell component="th" scope="row">
+                                {m.id}
+                            </TableCell>
+                            <TableCell align="right">{m.type}</TableCell>
+                            <TableCell align="right">{m.code}</TableCell>
+                            <TableCell align="right">{m.name}</TableCell>
+                            <TableCell align="right">{m.url}</TableCell>
+                            <TableCell align="right">
+                                <Checkbox
+                                    checked={m.normal}
+                                    inputProps={{ 'aria-label': 'primary checkbox' }}
+                                />
+                            </TableCell>
+                            <TableCell align="right">
+                                <Checkbox
+                                    checked={m.transfer}
+                                    inputProps={{ 'aria-label': 'primary checkbox' }}
+                                />
+                            </TableCell>
+                            <TableCell align="right">
+                                <Checkbox
+                                
+                                    checked={m.loanAuto}
+                                    inputProps={{ 'aria-label': 'primary checkbox' }}
+                                />
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
             <Pagination className={classes.pagenation} count={10} color="primary" />
         </>
     );
