@@ -22,6 +22,8 @@ import Faq from "../../pages/faq";
 import Product from "../../pages/product";
 
 import CodeNormal from '../../pages/codes/normal'
+import CodeBank from '../../pages/codes/bank'
+import CodeJob from '../../pages/codes/job'
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -53,6 +55,8 @@ function Layout(props) {
 
                         {/* Code */}
                         <Route path="/app/code/normal" component={CodeNormal} />
+                        <Route path="/app/code/bank" component={CodeBank} />
+                        <Route path="/app/code/job" component={CodeJob} />
                     </Switch>
                     <Box
                         mt={5}
