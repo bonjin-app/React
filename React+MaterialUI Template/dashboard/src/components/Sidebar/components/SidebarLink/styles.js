@@ -37,7 +37,7 @@ export default makeStyles(theme => ({
         padding: 0,
         color: theme.palette.text.secondary + "CC",
         transition: theme.transitions.create(["opacity", "color"]),
-        fontSize: 16,
+        fontSize: 14,
     },
     linkTextActive: {
         color: theme.palette.text.primary,
@@ -46,7 +46,7 @@ export default makeStyles(theme => ({
         opacity: 0,
     },
     nestedList: {
-        paddingLeft: theme.spacing(2) + 30,
+        paddingLeft: theme.spacing(2) + 14,
     },
     sectionTitle: {
         marginLeft: theme.spacing(4.5),

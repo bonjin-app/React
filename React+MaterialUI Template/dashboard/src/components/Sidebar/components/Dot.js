@@ -5,8 +5,8 @@ import classnames from "classnames";
 // styles
 var useStyles = makeStyles(theme => ({
     dotBase: {
-        width: 8,
-        height: 8,
+        width: 5,
+        height: 5,
         backgroundColor: theme.palette.text.hint,
         borderRadius: "50%",
         transition: theme.transitions.create("background-color"),
