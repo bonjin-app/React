@@ -3,7 +3,6 @@ import { Drawer, IconButton, List } from "@material-ui/core";
 import {
     Dashboard as DashboardIcon,
     NotificationsNone as NotificationsIcon,
-    HelpOutline as FAQIcon,
     Policy as PolicyIcon,
     Ballot as BallotIcon,
     ArrowBack as ArrowBackIcon,
