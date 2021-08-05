@@ -15,13 +15,21 @@ const useStyle = makeStyles(theme => ({
     }
 }));
 
+const headCells = [
+    { id: 'fullname', label: 'Employee Name'},
+    { id: 'email', label: 'Email Address (Personal)'},
+    { id: 'mobile', label: 'Mobile Number'},
+    { id: 'department', label: 'Department'},
+]
+
 const Employees = () => {
     const classes = useStyle();
     const [records, setRecords] = useState(employeeService.getEmployees())
 
     const {
+        TableHead,
         TableContainer
-    } = useTable();
+    } = useTable(records, headCells);
 
     return (
         <>
@@ -38,6 +46,7 @@ const Employees = () => {
                 {/* <EmployeeForm/> */}
 
                 <TableContainer>
+                    <TableHead/>
                     <TableBody>
                         {records.map((m, i) => {
                                 return (
