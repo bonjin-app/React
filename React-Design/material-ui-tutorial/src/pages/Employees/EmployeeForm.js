@@ -63,7 +63,8 @@ const EmployeeForm = () => {
         e.preventDefault();
         
         if (validate()) {
-            window.alert('testing...')
+            employeeService.insertEmployee(values);
+            resetForm();
         }
     }
 
