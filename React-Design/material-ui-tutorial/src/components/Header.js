@@ -10,6 +10,7 @@ import React from 'react'
 const useStyle = makeStyles(theme => ({
     root: {
         backgroundColor: '#fff',
+        // transform: 'translateZ(0)',
     },
     searchInput: {
         opacity: '0.6',
