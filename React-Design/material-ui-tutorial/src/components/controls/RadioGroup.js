@@ -20,6 +20,7 @@ const RadioGroup = (props) => {
                 {items.map((m, i) => {
                     return (
                         <FormControlLabel
+                            key={m.id}
                             value={m.id}
                             control={<Radio />}
                             label={m.title}
