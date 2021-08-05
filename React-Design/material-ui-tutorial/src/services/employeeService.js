@@ -20,10 +20,11 @@ export const insertEmployee = (data) => {
 }
 
 export const generateEmployeeId = () => {
-    if (localStorage.getItem(KEYS.employees) === null) {
-        localStorage.setItem(KEYS.employees, '0');
+    if (localStorage.getItem(KEYS.employeeId) == null) {
+        localStorage.setItem(KEYS.employeeId, '0');
     }
     let id = parseInt(localStorage.getItem(KEYS.employeeId));
+    console.log(id)
     localStorage.setItem(KEYS.employeeId, (++id).toString());
     return id;
 }
