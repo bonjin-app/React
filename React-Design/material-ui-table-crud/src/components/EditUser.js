@@ -1,7 +1,7 @@
 import { Typography, Button, FormControl, FormGroup, Input, InputLabel, makeStyles } from '@material-ui/core'
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import { addUser } from '../Service/api'
+import React, { useEffect, useState } from 'react'
+import { useHistory, useParams} from 'react-router-dom'
+import { editUser, getUser } from '../Service/api'
 
 const useStyle = makeStyles({
     container: {
@@ -24,7 +24,17 @@ const EditUser = () => {
     const classes = useStyle();
     const [user, setUser] = useState(initialValues);
     const { name, username, email, phone } = user;
+    const { id } = useParams();
     const history = useHistory();
+
+    useEffect(() => {
+        loadUserData();
+    }, [])
+
+    const loadUserData = async () => {
+        const response = await getUser(id);
+        setUser(response.data)
+    }
 
     const onValueChange = (e) => {
         setUser({
@@ -35,8 +45,8 @@ const EditUser = () => {
         console.log(user)
     }
 
-    const addUserDetails = async () => {
-        await addUser(user);
+    const editUserDetails = async () => {
+        await editUser(id, user);
         history.push('/all');
     }
 
@@ -75,8 +85,8 @@ const EditUser = () => {
                 <Button
                     variant="contained"
                     color="primary"
-                    onClick={() => addUserDetails()}
-                >Add User</Button>
+                    onClick={() => editUserDetails()}
+                >Edit User</Button>
             </FormGroup>
         </>
     )
