@@ -19,8 +19,6 @@ const Employees = () => {
     const classes = useStyle();
     const [records, setRecords] = useState(employeeService.getEmployees())
 
-    console.log(records)
-
     const {
         TableContainer
     } = useTable();
@@ -37,23 +35,23 @@ const Employees = () => {
                 }
             />
             <Paper className={classes.pageContent}>
-                <EmployeeForm/>
+                {/* <EmployeeForm/> */}
 
-                {/* <TableContainer>
+                <TableContainer>
                     <TableBody>
-                        {
-                            records.map((m, i) => {
+                        {records.map((m, i) => {
                                 return (
                                     <TableRow key={m.id}>
                                         <TableCell>{m.fullname}</TableCell>
                                         <TableCell>{m.email}</TableCell>
                                         <TableCell>{m.mobile}</TableCell>
+                                        <TableCell>{m.department}</TableCell>
                                     </TableRow>
                                 )
                             })
                         }
                     </TableBody>
-                </TableContainer> */}
+                </TableContainer>
             </Paper>
         </>
     )
