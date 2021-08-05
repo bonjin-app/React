@@ -11,7 +11,7 @@ const NavBar = () => {
     const classes = useStyle();
 
     return (
-        <AppBar className={classes.header}>
+        <AppBar position="static" className={classes.header}>
             <Toolbar>
                 <Typography component="h2">Code for Interview</Typography>
                 <Typography component="h2">All Users</Typography>
