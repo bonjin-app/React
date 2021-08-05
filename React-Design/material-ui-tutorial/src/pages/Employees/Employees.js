@@ -4,8 +4,18 @@ import EmployeeForm from './EmployeeForm'
 import {
     PeopleOutlineTwoTone as PeopleOutlineTwoToneIcon
 } from "@material-ui/icons";
+import { makeStyles, Paper } from '@material-ui/core';
+
+const useStyle = makeStyles(theme => ({
+    pageContent: {
+        margin: theme.spacing(5),
+        padding: theme.spacing(3),
+    }
+}));
 
 const Employees = () => {
+    const classes = useStyle();
+
     return (
         <>
             <PageHeader
@@ -17,7 +27,9 @@ const Employees = () => {
                     />
                 }
             />
-            <EmployeeForm/>
+            <Paper className={classes.pageContent}>
+                <EmployeeForm/>
+            </Paper>
         </>
     )
 }
