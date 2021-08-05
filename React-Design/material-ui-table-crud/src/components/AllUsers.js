@@ -6,7 +6,7 @@ import { getUsers } from '../Service/api'
 const useStyle = makeStyles({
     table: {
         width: '90%',
-        margin: '50px 0 0 50px',
+        margin: '50px',
     },
     thred: {
         '& > *': {
@@ -51,7 +51,7 @@ const AllUsers = () => {
             <TableBody>
                 {users.map((m, i) => {
                     return (
-                        <TableRow className={classes.row}>
+                        <TableRow key={i} className={classes.row}>
                             <TableCell>{m.id}</TableCell>
                             <TableCell>{m.name}</TableCell>
                             <TableCell>{m.username}</TableCell>
