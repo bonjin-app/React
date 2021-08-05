@@ -1,6 +1,7 @@
-import { makeStyles, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import { Button, makeStyles, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
 import React, { useEffect, useState } from 'react'
 import { getUsers } from '../Service/api'
+import { Link } from 'react-router-dom';
 
 
 const useStyle = makeStyles({
@@ -46,6 +47,7 @@ const AllUsers = () => {
                     <TableCell>Username</TableCell>
                     <TableCell>Email</TableCell>
                     <TableCell>Phone</TableCell>
+                    <TableCell></TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -57,6 +59,15 @@ const AllUsers = () => {
                             <TableCell>{m.username}</TableCell>
                             <TableCell>{m.email}</TableCell>
                             <TableCell>{m.phone}</TableCell>
+                            <TableCell>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    style={{ marginRight: 10 }}
+                                    component={Link}
+                                    to={`/edit/${m.id}`}>Edit</Button>
+                                <Button variant="contained" color="secondary">Delete</Button>
+                            </TableCell>
                         </TableRow>
                     )
                 })}
