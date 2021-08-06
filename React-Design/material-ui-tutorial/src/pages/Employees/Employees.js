@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
 import PageHeader from '../../components/PageHeader'
 import {
-    PeopleOutlineTwoTone as PeopleOutlineTwoToneIcon
+    PeopleOutlineTwoTone as PeopleOutlineTwoToneIcon, Search
 } from "@material-ui/icons";
-import { makeStyles, Paper, TableBody, TableCell, TableRow } from '@material-ui/core';
+import { InputAdornment, makeStyles, Paper, TableBody, TableCell, TableRow, Toolbar } from '@material-ui/core';
 import useTable from '../../components/useTable';
 import * as employeeService from '../../services/employeeService';
 import EmployeeForm from './EmployeeForm';
+import Controls from '../../components/controls';
 
 const useStyle = makeStyles(theme => ({
     pageContent: {
         margin: theme.spacing(5),
         padding: theme.spacing(3),
+    },
+    searchInput: {
+        width: '75%',
     }
 }));
 
@@ -35,6 +39,7 @@ const Employees = () => {
     } = useTable(records, headCells, filterFn);
 
     const handleSearch = (e) => {
+        console.log("handleSearch")
         let target = e.target;
         setFilterFn({
             fn: items => {
@@ -59,6 +64,20 @@ const Employees = () => {
             />
             <Paper className={classes.pageContent}>
                 {/* <EmployeeForm/> */}
+                <Toolbar>
+                    <Controls.Input
+                        label="Search Employees"
+                        className={classes.searchInput}
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <Search/>
+                                </InputAdornment>
+                            )
+                        }}
+                        onChange={handleSearch}
+                    />
+                </Toolbar>
 
                 <TableContainer>
                     <TableHead/>
