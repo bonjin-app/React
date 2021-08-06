@@ -12,6 +12,7 @@ import * as employeeService from '../../services/employeeService';
 import EmployeeForm from './EmployeeForm';
 import Controls from '../../components/controls';
 import Popup from '../../components/controls/Popup';
+import Notification from '../../components/Notification';
 
 const useStyle = makeStyles(theme => ({
     pageContent: {
@@ -41,6 +42,7 @@ const Employees = () => {
     const [records, setRecords] = useState(employeeService.getEmployees())
     const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
     const [openPopup, setOpenPopup] = useState(false);
+    const [notify, setNotify] = useState({isOpen: false, message: '', type: ''})
 
     const {
         TableHead,
@@ -73,11 +75,28 @@ const Employees = () => {
         setRecordForEdit(null);
         setOpenPopup(false);
         setRecords(employeeService.getEmployees());
+        setNotify({
+            isOpen: true,
+            message: 'Submitted Successfully',
+            type: 'success'
+        })
     }
 
     const openInPopup = (item) => {
         setRecordForEdit(item);
         setOpenPopup(true);
+    }
+
+    const onDelete = (id) => {
+        if (window.confirm('Are uou sure to delete this record?')) { 
+            employeeService.deleteEmployee(id);
+            setRecords(employeeService.getEmployees());
+            setNotify({
+                isOpen: true,
+                message: 'Deleted Successfully',
+                type: 'error'
+            })
+        }
     }
 
     return (
@@ -134,6 +153,7 @@ const Employees = () => {
                                             </Controls.ActionButton>
                                             <Controls.ActionButton
                                                 color="secondary"
+                                                onClick={() => onDelete(m.id)}
                                             >   
                                                 <DeleteOutline fontSize="smail"/>
                                             </Controls.ActionButton>
@@ -157,6 +177,10 @@ const Employees = () => {
                     addOrEdit={addOrEdit}
                 />
             </Popup>
+            <Notification
+                notify={notify}
+                setNotify={setNotify}
+            />
         </>
     )
 }

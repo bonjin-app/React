@@ -24,7 +24,13 @@ export const updateEmployee = (data) => {
     let recordIndex = employees.findIndex(x => x.id === data.id);
     employees[recordIndex] = { ...data };
     localStorage.setItem(KEYS.employees, JSON.stringify(employees))
-}    
+}
+
+export const deleteEmployee = (id) => {
+    let employees = getEmployees();
+    employees = employees.filter(x => x.id !== id);
+    localStorage.setItem(KEYS.employees, JSON.stringify(employees))
+}   
 
 export const generateEmployeeId = () => {
     if (localStorage.getItem(KEYS.employeeId) == null) {
