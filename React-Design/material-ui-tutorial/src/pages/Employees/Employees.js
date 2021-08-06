@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PageHeader from '../../components/PageHeader'
 import {
+    Add,
     PeopleOutlineTwoTone as PeopleOutlineTwoToneIcon, Search
 } from "@material-ui/icons";
 import { InputAdornment, makeStyles, Paper, TableBody, TableCell, TableRow, Toolbar } from '@material-ui/core';
@@ -8,6 +9,7 @@ import useTable from '../../components/useTable';
 import * as employeeService from '../../services/employeeService';
 import EmployeeForm from './EmployeeForm';
 import Controls from '../../components/controls';
+import Popup from '../../components/controls/Popup';
 
 const useStyle = makeStyles(theme => ({
     pageContent: {
@@ -16,6 +18,10 @@ const useStyle = makeStyles(theme => ({
     },
     searchInput: {
         width: '75%',
+    },
+    newButton: {
+        position: 'absolute',
+        right: '10px',
     }
 }));
 
@@ -30,6 +36,7 @@ const Employees = () => {
     const classes = useStyle();
     const [records, setRecords] = useState(employeeService.getEmployees())
     const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
+    const [openPopup, setOpenPopup] = useState(false);
 
     const {
         TableHead,
@@ -63,7 +70,7 @@ const Employees = () => {
                 }
             />
             <Paper className={classes.pageContent}>
-                {/* <EmployeeForm/> */}
+                
                 <Toolbar>
                     <Controls.Input
                         label="Search Employees"
@@ -76,6 +83,13 @@ const Employees = () => {
                             )
                         }}
                         onChange={handleSearch}
+                    />
+                    <Controls.Button
+                        className={classes.newButton}
+                        text="Add New"
+                        variant="outlined"
+                        startIcon={<Add />}
+                        onClick={() => setOpenPopup(true)}
                     />
                 </Toolbar>
 
@@ -97,6 +111,14 @@ const Employees = () => {
                 </TableContainer>
                 <TablePagination/>
             </Paper>
+
+            <Popup
+                title="Employee Form"
+                openPopup={openPopup}
+                setOpenPopup={setOpenPopup}
+            >
+                <EmployeeForm/>
+            </Popup>
         </>
     )
 }

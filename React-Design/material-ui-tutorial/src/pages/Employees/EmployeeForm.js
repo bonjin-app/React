@@ -64,7 +64,7 @@ const EmployeeForm = () => {
         
         if (validate()) {
             employeeService.insertEmployee(values);
-            // resetForm();
+            resetForm();
         }
     }
 
