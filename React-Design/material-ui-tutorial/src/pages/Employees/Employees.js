@@ -19,17 +19,32 @@ const headCells = [
     { id: 'fullname', label: 'Employee Name'},
     { id: 'email', label: 'Email Address (Personal)'},
     { id: 'mobile', label: 'Mobile Number'},
-    { id: 'department', label: 'Department'},
+    { id: 'department', label: 'Department', disableSorting: true},
 ]
 
 const Employees = () => {
     const classes = useStyle();
     const [records, setRecords] = useState(employeeService.getEmployees())
+    const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
 
     const {
         TableHead,
-        TableContainer
-    } = useTable(records, headCells);
+        TableContainer,
+        TablePagination,
+        recordsAfterPagingAndSorting
+    } = useTable(records, headCells, filterFn);
+
+    const handleSearch = (e) => {
+        let target = e.target;
+        setFilterFn({
+            fn: items => {
+                if (target.value == "")
+                    return items;
+                else
+                    return items.filter(x => x.fullname.toLowerCase().includes(target.value))
+            }
+        })
+    }
 
     return (
         <>
@@ -48,7 +63,7 @@ const Employees = () => {
                 <TableContainer>
                     <TableHead/>
                     <TableBody>
-                        {records.map((m, i) => {
+                        {recordsAfterPagingAndSorting().map((m, i) => {
                                 return (
                                     <TableRow key={m.id}>
                                         <TableCell>{m.fullname}</TableCell>
@@ -61,6 +76,7 @@ const Employees = () => {
                         }
                     </TableBody>
                 </TableContainer>
+                <TablePagination/>
             </Paper>
         </>
     )
