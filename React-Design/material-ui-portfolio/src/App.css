@@ -1,3 +1,7 @@
 :root {
   --main-color: #ffc500;
 }
+
+.container-shadow {
+  box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.13);
+}
