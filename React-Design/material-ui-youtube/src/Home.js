@@ -1,12 +1,29 @@
 import { AppBar, Button, IconButton, makeStyles, Toolbar, Typography } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import {
+    Menu as MenuIcon,
+    AccountCircle as AccountCircleIcon,
+    VideoCall as VideoCallIcon,
+    MoreVert as MoreVertIcon,
+    Apps as AppsIcon,
+} from '@material-ui/icons';
 import React from 'react'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        backgroundColor: theme.palette.primary.main,
-        padding: theme.spacing(2),
         height: '100vh',
+    },
+    appBar: {
+        boxShadow: 'none',
+    },
+    menuIcon: {
+        marginRight: theme.spacing(5),
+        marginLeft: theme.spacing(1),
+    },
+    icons: {
+        marginRight: theme.spacing(5),
+    },
+    glow: {
+        flexGrow: 1,
     }
 }));
 
@@ -14,17 +31,46 @@ const Home = () => {
     const classes = useStyles();
 
     return (
-        <AppBar color='inherit' position="static">
-            <Toolbar>
-                <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                    <MenuIcon />
-                </IconButton>
-                <Typography variant="h6" className={classes.title}>
-                    News
-                </Typography>
-                <Button color="inherit">Login</Button>
-            </Toolbar>
-        </AppBar>
+        <div className={classes.root}>
+            <AppBar className={classes.appBar} color='inherit'>
+                <Toolbar>
+                    <IconButton
+                        edge="start"
+                        className={classes.menuIcon}
+                        color="inherit"
+                        aria-label="menu">
+                        <MenuIcon />
+                    </IconButton>
+                    <div className={classes.glow} />
+                    <IconButton
+                        edge="start"
+                        className={classes.icons}
+                        color="inherit"
+                        aria-label="video-call">
+                        <VideoCallIcon />
+                    </IconButton>
+                    <IconButton
+                        edge="start"
+                        className={classes.icons}
+                        color="inherit"
+                        aria-label="menu">
+                        <AppsIcon />
+                    </IconButton>
+                    <IconButton
+                        edge="start"
+                        className={classes.icons}
+                        color="inherit"
+                        aria-label="menu">
+                        <MoreVertIcon />
+                    </IconButton>
+                    <Button
+                        variant='outlined'
+                        color="secondary"
+                        startIcon={<AccountCircleIcon />}
+                    >GIGAS Login</Button>
+                </Toolbar>
+            </AppBar>
+        </div>
     )
 }
 
