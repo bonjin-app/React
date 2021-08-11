@@ -15,12 +15,15 @@ const useStyles = makeStyles((theme) => ({
     appBar: {
         boxShadow: 'none',
     },
+    logo: {
+        height: 24,
+    },
     menuIcon: {
-        marginRight: theme.spacing(5),
+        marginRight: theme.spacing(2),
         marginLeft: theme.spacing(1),
     },
     icons: {
-        marginRight: theme.spacing(5),
+        marginRight: theme.spacing(2),
     },
     glow: {
         flexGrow: 1,
@@ -41,6 +44,7 @@ const Home = () => {
                         aria-label="menu">
                         <MenuIcon />
                     </IconButton>
+                    <img className={classes.logo} src={'/images/preto.png'} alt='' />
                     <div className={classes.glow} />
                     <IconButton
                         edge="start"
