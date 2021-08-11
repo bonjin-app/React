@@ -1,4 +1,5 @@
-import { Button, ThemeProvider, createTheme } from '@material-ui/core';
+import { ThemeProvider, createTheme, makeStyles } from '@material-ui/core';
+import Home from './Home';
 
 const theme = createTheme({
   palette: {
@@ -9,16 +10,13 @@ const theme = createTheme({
       main: '#3f51b5',
     },
   },
+  spacing: 4,
 });
 
 function App() {
-
   return (
     <ThemeProvider theme={theme}>
-      <div style={{
-        backgroundColor: 'red',
-        height: '100vh',
-      }}></div>
+      <Home />
     </ThemeProvider>
   );
 }
