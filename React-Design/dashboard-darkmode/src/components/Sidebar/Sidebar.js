@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
+import Menu from './Menu/Menu';
+import Profile from './Profile';
 
 const Container = styled.div`
     background-color: ${({ theme }) => theme.secondary};
@@ -16,7 +18,8 @@ const Container = styled.div`
 const Sidebar = () => {
     return (
         <Container>
-            Sidebar
+            <Profile />
+            <Menu />
         </Container>
     )
 }
