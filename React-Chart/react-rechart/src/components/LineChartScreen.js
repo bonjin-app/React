@@ -59,7 +59,8 @@ const LineChartScreen = () => {
     return (
         <>
             <h1>Line Chart</h1>
-            <ResponsiveContainer width="100%" aspect={3}>
+            <ResponsiveContainer
+                width="100%" aspect={3}>
                 <LineChart data={data}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" interval={'preserveStartEnd'} />
