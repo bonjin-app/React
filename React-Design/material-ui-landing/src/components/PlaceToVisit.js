@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core';
 import React from 'react'
 import ImageCard from './ImageCard';
 import places from '../static/places';
+import useWindowPosition from '../hook/useWindowPosition';
 
 const useStyle = makeStyles((theme) => ({
     root: {
@@ -14,11 +15,12 @@ const useStyle = makeStyles((theme) => ({
 
 const PlaceToVisit = () => {
     const classes = useStyle();
+    const checked = useWindowPosition('header');
 
     return (
         <div className={classes.root}>
-            <ImageCard place={places[0]}/>
-            <ImageCard place={places[1]}/>
+            <ImageCard place={places[0]} checked={checked}/>
+            <ImageCard place={places[1]} checked={checked}/>
         </div>
     )
 }

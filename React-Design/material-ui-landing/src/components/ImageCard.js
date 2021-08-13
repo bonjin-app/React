@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Collapse } from '@material-ui/core';
 
 const useStyles = makeStyles({
     root: {
@@ -32,32 +33,41 @@ const useStyles = makeStyles({
 
 export default function ImageCard(props) {
     const classes = useStyles();
-    const { place } = props;
+    const { place, checked } = props;
 
     return (
-        <Card className={classes.root}>
-            <CardMedia
-            className={classes.media}
-            image={place.imageUrl}
-            title="Contemplative Reptile"
-            />
-            <CardContent>
-                <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h1"
-                    className={classes.title}
-                >
-                {place.title}
-            </Typography>
-                <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    className={classes.description}
-                    component="p">
-                {place.description}
-            </Typography>
-            </CardContent>
-        </Card>
+        <Collapse
+            in={checked}
+            {...(
+                checked
+                    ? { timeout: 1000 }
+                    : {}
+            )}
+        >
+            <Card className={classes.root}>
+                <CardMedia
+                className={classes.media}
+                image={place.imageUrl}
+                title="Contemplative Reptile"
+                />
+                <CardContent>
+                    <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="h1"
+                        className={classes.title}
+                    >
+                    {place.title}
+                </Typography>
+                    <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        className={classes.description}
+                        component="p">
+                    {place.description}
+                </Typography>
+                </CardContent>
+                </Card>
+        </Collapse>
     );
 }
