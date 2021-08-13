@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core';
 import './App.css';
 import Header from './components/header/Header';
+import PlaceToVisit from './components/PlaceToVisit';
 
 
 const useStyle = makeStyles((theme) => ({
@@ -17,7 +18,8 @@ function App() {
 
   return (
     <div className={classes.root}>
-      <Header/>
+      <Header />
+      <PlaceToVisit/>
     </div>
   );
 }
