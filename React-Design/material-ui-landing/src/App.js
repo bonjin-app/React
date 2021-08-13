@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core';
+import { CssBaseline, makeStyles } from '@material-ui/core';
 import './App.css';
 import Header from './components/header/Header';
 import PlaceToVisit from './components/PlaceToVisit';
@@ -18,6 +18,7 @@ function App() {
 
   return (
     <div className={classes.root}>
+      <CssBaseline/>
       <Header />
       <PlaceToVisit/>
     </div>
