@@ -1,9 +1,9 @@
-import { AppBar, IconButton, makeStyles, Toolbar } from '@material-ui/core'
+import { AppBar, Collapse, IconButton, makeStyles, Toolbar } from '@material-ui/core'
 import {
     ExpandMore as ExpandMoreIcon,
     Sort as SortIcon
 } from '@material-ui/icons';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const useStyle = makeStyles((theme) => ({
     root: {
@@ -45,6 +45,11 @@ const useStyle = makeStyles((theme) => ({
 
 const Header = () => {
     const classes = useStyle();
+    const [checked, setChecked] = useState(false);
+
+    useEffect(() => {
+        setChecked(true);
+    }, [])
 
     return (
         <div className={classes.root}>
@@ -62,16 +67,24 @@ const Header = () => {
                 </Toolbar>
             </AppBar>
             
-            <section className={classes.container}>
-                <h1 className={classes.title}>
-                    Welcome to <br />
-                    My{' '}
-                    <span className={classes.colorText}>Island</span>
-                </h1>
-                <IconButton>
-                    <ExpandMoreIcon className={classes.goDown}/>
-                </IconButton>
-            </section>
+            <Collapse
+                in={checked}
+                collapsedSize={50}
+                {...(
+                    checked ? { timeout: 1000 } : {}
+                )}
+            >
+                <section className={classes.container}>
+                    <h1 className={classes.title}>
+                        Welcome to <br />
+                        My{' '}
+                        <span className={classes.colorText}>Island</span>
+                    </h1>
+                    <IconButton>
+                        <ExpandMoreIcon className={classes.goDown}/>
+                    </IconButton>
+                </section>
+            </Collapse>
         </div>
     )
 }
