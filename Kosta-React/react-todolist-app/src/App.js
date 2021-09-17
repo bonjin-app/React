@@ -43,7 +43,7 @@ class App extends Component {
 
 
   render() {
-    const { input } = this.state;
+    const { input, todos } = this.state;
     const { handleChange, handleCreate, handleKeyPress } = this;
     
     return (
@@ -53,7 +53,7 @@ class App extends Component {
                                       myCreate={handleCreate}
                                       myKeyPress={handleKeyPress}
                                 />}>
-          <TodoItemList />
+          <TodoItemList todos={todos}/>
         </TodoListTemplate>
       </div>
     );
