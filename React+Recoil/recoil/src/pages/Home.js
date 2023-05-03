@@ -1,5 +1,6 @@
 import React from 'react'
 import { atom, selector, useRecoilState, useRecoilValue } from 'recoil'
+import TodoList from './TodoList';
 
 const textState = atom({
     key: 'textState',
@@ -20,6 +21,8 @@ function Home() {
     <div>
       <TextInput/>
       <CharacterCount/>
+
+      <TodoList/>
     </div>
   )
 }
