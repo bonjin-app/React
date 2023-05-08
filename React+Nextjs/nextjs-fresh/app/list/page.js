@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import img from "/public/next.svg";
 
 export default function page() {
   let products = ["Tomatoes", "Pesta", "Coconut"];
