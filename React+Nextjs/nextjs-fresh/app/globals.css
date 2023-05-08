@@ -6,7 +6,7 @@ body {
 
 .title {
   text-align: center;
-  margin-top: 150px;
+  margin-top: 50px;
 }
 
 .title-sub {
@@ -24,7 +24,7 @@ body {
 
 .navbar {
   background-color: white;
-  padding: 200px;
+  padding: 20px;
 }
 
 .navbar a {
