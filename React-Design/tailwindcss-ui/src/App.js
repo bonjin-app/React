@@ -1,6 +1,60 @@
 function App() {
   return (
     <>
+      <div className="text-base text-red-500">hello world</div>
+      <div className="text-lg">hello world</div>
+      <div className="text-2xl">hello world</div>
+      <div className="text-2xl p-3">hello world</div>
+      <div className="text-2xl pt-3">hello world</div>
+
+      <div className="p-5">
+        <ui className="list-disc">
+          <li>hello world</li>
+          <li>hello world</li>
+          <li>hello world</li>
+          <li>hello world</li>
+          <li>hello world</li>
+        </ui>
+      </div>
+
+      <div className="p-5">
+        <ui className="list-disc">
+          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nemo dicta ex architecto iste officiis, voluptate perferendis deleniti rerum cum possimus, quas placeat doloremque ab ea explicabo recusandae corporis incidunt.</li>
+          <li>hello world</li>
+          <li>hello world</li>
+          <li>hello world</li>
+          <li>hello world</li>
+        </ui>
+      </div>
+
+      <div className="p-5">
+        <ui className="list-decimal">
+          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nemo dicta ex architecto iste officiis, voluptate perferendis deleniti rerum cum possimus, quas placeat doloremque ab ea explicabo recusandae corporis incidunt.</li>
+          <li>hello world</li>
+          <li>hello world</li>
+          <li>hello world</li>
+          <li>hello world</li>
+        </ui>
+      </div>
+      <div className="p-5">
+        <ui className="list-decimal hover:list-disc">
+          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nemo dicta ex architecto iste officiis, voluptate perferendis deleniti rerum cum possimus, quas placeat doloremque ab ea explicabo recusandae corporis incidunt.</li>
+          <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni dolorum iusto eos reprehenderit eum deleniti dolores non quo esse pariatur? Cumque placeat nulla a facilis, facere commodi quia illo nobis!</li>
+          <li>hello world</li>
+          <li>hello world</li>
+          <li>hello world</li>
+        </ui>
+      </div>
+
+      <div className="w-32 h-32 bg-red-400"></div>
+      <div className="w-32 h-32 bg-red-400 rounded"></div>
+      <div className="w-32 h-32 bg-red-400 rounded-2xl"></div>
+      <div className="w-32 h-32 bg-red-400 rounded-full"></div>
+
+      <div className="text-[17px]">hello world</div>
+      <div className="mt-[17px]">hello world</div>
+      <div className="bg-[#4267B2]">hello world</div>
+
       <div class="space-y-12">
         <div class="w-96 bg-white shadow rounded">w-96</div>
         <div class="w-80 bg-white shadow rounded">w-80</div>
